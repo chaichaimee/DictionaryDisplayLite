@@ -2,105 +2,108 @@
 # Copyright (C) 2026 Chai Chaimee
 # Licensed under GNU General Public License. See COPYING.txt for details.
 
+import os
+import sys
+import threading
 import re
+from comtypes import COMError
+
+import addonHandler
+import core
 import globalPluginHandler
 import controlTypes
-from logHandler import log
-import addonHandler
+import logHandler
 
-# Initialize translation
 addonHandler.initTranslation()
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-	"""
-	Global plugin that intercepts focus events on dictionary list items
-	and temporarily alters their names for concise speech.
-	"""
 
 	def __init__(self):
 		super(GlobalPlugin, self).__init__()
-		# Translators: Log message when the add-on is loaded
-		log.info(_("DictionaryDisplayLite loaded"))
+		self._isDictionaryDialogActive = False
+		logHandler.log.info(_("DictionaryDisplayLite loaded in Watchdog mode"))
 
-	def event_gainFocus(self, obj, nextHandler):
+	def terminate(self):
 		"""
-		Triggered when an object gains focus.
-		If the object is a dictionary list item, modify its name temporarily.
+		Safely release resources and reset state to prevent zombie states.
 		"""
-		if self._isDictionaryListItem(obj):
-			original = obj.name
-			if original:
-				modified = self._condenseDictionaryEntry(original)
-				if modified and modified != original:
-					obj.name = modified
-					# Let the original event handlers run (speech, etc.)
-					nextHandler()
-					# Restore original name to avoid permanent changes
-					obj.name = original
-					return
-		# Not a dictionary item or no modification needed
+		self._isDictionaryDialogActive = False
+		super(GlobalPlugin, self).terminate()
+
+	def event_foreground(self, foregroundObj, nextHandler):
+		"""
+		Watchdog trigger: Monitors top-level window changes to toggle the active state.
+		"""
+		try:
+			# Default to sleeping state for non-dictionary windows
+			self._isDictionaryDialogActive = False
+
+			if foregroundObj and foregroundObj.role == controlTypes.Role.DIALOG:
+				dialogTitle = foregroundObj.name or foregroundObj.windowText
+				if dialogTitle:
+					titleLower = dialogTitle.lower()
+					if (_("dictionary") in titleLower or
+						_("default") in titleLower or
+						_("voice") in titleLower or
+						_("temporary") in titleLower or
+						"dictionary" in titleLower):
+						# Wake state activated
+						self._isDictionaryDialogActive = True
+
+		except (RuntimeError, AttributeError, COMError) as foregroundCheckError:
+			logHandler.log.debug(f"DictionaryDisplayLite: Foreground check aborted safely - {foregroundCheckError}")
+
 		nextHandler()
 
-	def _isDictionaryListItem(self, obj):
+	def event_gainFocus(self, focusedObj, nextHandler):
 		"""
-		Determine if the given object is a list item inside a dictionary dialog.
+		Intercepts focus events. Uses O(1) early exit if the dictionary is not active.
 		"""
-		# Must be a list item
-		if obj.role != controlTypes.ROLE_LISTITEM:
-			return False
+		# Early Exit: Watchdog is asleep
+		if not self._isDictionaryDialogActive:
+			return nextHandler()
 
-		# Traverse parents to find the dialog
-		parent = obj.parent
-		while parent and parent.role != controlTypes.ROLE_DIALOG:
-			parent = parent.parent
+		try:
+			if focusedObj and focusedObj.role == controlTypes.Role.LISTITEM:
+				originalName = focusedObj.name
+				if originalName:
+					modifiedName = self._condenseDictionaryEntry(originalName)
+					if modifiedName and modifiedName != originalName:
+						# Temporarily modify the object's name
+						focusedObj.name = modifiedName
+						try:
+							# Pass to next handlers (including speech output)
+							nextHandler()
+						finally:
+							# Strictly guarantee restoration of the original state
+							focusedObj.name = originalName
+						return
+						
+		except (RuntimeError, AttributeError, COMError) as focusError:
+			logHandler.log.debug(f"DictionaryDisplayLite: Object mutation aborted safely - {focusError}")
 
-		if not parent:
-			return False
+		# Fallback to normal behavior if no modifications were made
+		nextHandler()
 
-		# Check dialog title against translated keywords
-		title = parent.windowText
-		if not title:
-			return False
-
-		title_lower = title.lower()
-		# Translators: Part of the dictionary dialog title (e.g., "Default dictionary", "Voice dictionary")
-		if _("dictionary") in title_lower:
-			return True
-		# Fallback for possible localized titles that might not contain the exact word "dictionary"
-		# Translators: Additional keywords that might appear in dictionary dialog titles
-		if _("default") in title_lower or _("voice") in title_lower or _("temporary") in title_lower:
-			return True
-		# Final fallback to English (if addon lacks translation)
-		if "dictionary" in title_lower:
-			return True
-
-		return False
-
-	def _condenseDictionaryEntry(self, rawText):
+	def _condenseDictionaryEntry(self, originalText):
 		"""
-		Remove labels like 'Pattern:', 'Replacement:', etc. from a dictionary entry.
-		Returns the condensed string or None if no change.
+		Removes excessive labels from a dictionary entry for concise output.
 		"""
-		# Split by semicolon to get each field
-		parts = rawText.split(';')
-		values = []
+		entrySegments = originalText.split(';')
+		extractedValues = []
 
-		for part in parts:
-			part = part.strip()
-			if ':' in part:
-				# Split only at the first colon to separate label from value
-				_, value = part.split(':', 1)
-				values.append(value.strip())
+		for segment in entrySegments:
+			segment = segment.strip()
+			if ':' in segment:
+				_, parsedValue = segment.split(':', 1)
+				extractedValues.append(parsedValue.strip())
 			else:
-				# If no colon (unlikely), keep the whole part
-				values.append(part)
+				extractedValues.append(segment)
 
-		# Join all values with a single space
-		condensed = ' '.join(values)
-		# Normalize whitespace
-		condensed = re.sub(r'\s+', ' ', condensed).strip()
+		condensedResult = ' '.join(extractedValues)
+		condensedResult = re.sub(r'\s+', ' ', condensedResult).strip()
 
-		# Return None if unchanged or empty
-		if not condensed or condensed == rawText:
+		if not condensedResult or condensedResult == originalText:
 			return None
-		return condensed
+			
+		return condensedResult

@@ -1,0 +1,275 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DictionaryDisplayLite 2026.9.9\n"
+"Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
+"POT-Creation-Date: 2026-09-09 16:27+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: chaiBot and Malee Yamazaki\n"
+"Language-Team: Thai\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: DevOn Addon\n"
+
+#: dictionaryDisplayLiteCore.py:395
+msgid "&Add"
+msgstr "เพิ่ม (&A)"
+
+#: dictionaryDisplayLiteCore.py:697
+msgid "&Line number:"
+msgstr "หมายเลขบรรทัด (&L):"
+
+#: dictionaryDisplayLiteCore.py:681
+msgid "&Pattern:"
+msgstr "รูปแบบ (&P):"
+
+#: dictionaryDisplayLiteCore.py:399
+#: dictionaryDisplayLiteCore.py:607
+msgid "&Remove"
+msgstr "ลบ (&R)"
+
+#: dictionaryDisplayLiteCore.py:384
+msgid "&Search:"
+msgstr "ค้นหา (&S):"
+
+#: dictionaryDisplayLiteCore.py:671
+msgid "Add Dictionary Entry"
+msgstr "เพิ่มรายการคำศัพท์ในพจนานุกรม"
+
+#: dictionaryDisplayLiteCore.py:87
+msgid "Anywhere"
+msgstr "ทุกตำแหน่ง"
+
+#: dictionaryDisplayLiteCore.py:686
+msgid "Case &sensitive"
+msgstr "ตัวพิมพ์เล็ก-ใหญ่ตรงกัน (&S)"
+
+#: dictionaryDisplayLiteCore.py:948
+msgid "Check dictionary error"
+msgstr "ตรวจสอบข้อผิดพลาดในพจนานุกรม"
+
+#: dictionaryDisplayLiteCore.py:1014
+msgid "Checking dictionaries for errors, please wait"
+msgstr "กำลังตรวจสอบข้อผิดพลาดในพจนานุกรม กรุณารอสักครู่"
+
+#: dictionaryDisplayLiteCore.py:578
+msgid "Clear the search box to reorder entries"
+msgstr "ล้างช่องค้นหาเพื่อจัดเรียงรายการใหม่"
+
+#: dictionaryDisplayLiteCore.py:277
+msgid "Condense dictionary entries in the list (shorten spoken labels)"
+msgstr "ย่อรายการพจนานุกรมในรายการ (ทำให้ป้ายเสียงอ่านสั้นลง)"
+
+#: dictionaryDisplayLiteCore.py:1074
+msgid "Could not open the dictionary error report"
+msgstr "ไม่สามารถเปิดรายงานข้อผิดพลาดของพจนานุกรมได้"
+
+#: dictionaryDisplayLiteCore.py:993
+msgid "Could not open the dictionary file"
+msgstr "ไม่สามารถเปิดไฟล์พจนานุกรมได้"
+
+#: dictionaryDisplayLiteCore.py:1010
+msgid "Could not open the dictionary folder"
+msgstr "ไม่สามารถเปิดโฟลเดอร์พจนานุกรมได้"
+
+#: dictionaryDisplayLiteCore.py:1095
+msgid "Could not read this dictionary file: {error}"
+msgstr "ไม่สามารถอ่านไฟล์พจนานุกรมนี้ได้: {error}"
+
+#: dictionaryDisplayLiteCore.py:66
+msgid "Could not save DictionaryDisplayLite settings."
+msgstr "ไม่สามารถบันทึกการตั้งค่า DictionaryDisplayLite ได้"
+
+#: dictionaryDisplayLiteCore.py:598
+msgid "Could not save the voice dictionary file"
+msgstr "ไม่สามารถบันทึกไฟล์พจนานุกรมเสียงได้"
+
+#: dictionaryDisplayLiteCore.py:1063
+msgid "Could not write the dictionary error report"
+msgstr "ไม่สามารถเขียนรายงานข้อผิดพลาดของพจนานุกรมได้"
+
+#: dictionaryDisplayLiteCore.py:922
+#: dictionaryDisplayLiteCore.py:1032
+msgid "Default dictionary"
+msgstr "พจนานุกรมเริ่มต้น"
+
+#: dictionaryDisplayLiteCore.py:389
+msgid "Dictionary &entries"
+msgstr "รายการพจนานุกรม (&E)"
+
+#: dictionaryDisplayLiteCore.py:1050
+msgid "Dictionary check complete. No problems were found"
+msgstr "ตรวจสอบพจนานุกรมเสร็จสิ้น ไม่พบปัญหาใดๆ"
+
+#: dictionaryDisplayLiteCore.py:1068
+msgid "Dictionary check complete. Problems were found, opening the report"
+msgstr "ตรวจสอบพจนานุกรมเสร็จสิ้น พบปัญหา กำลังเปิดรายงาน"
+
+#: dictionaryDisplayLiteCore.py:270
+#: dictionaryDisplayLiteCore.py:951
+msgid "DictionaryDisplayLite Settings"
+msgstr "การตั้งค่า DictionaryDisplayLite"
+
+#: dictionaryDisplayLiteCore.py:766
+msgid "DictionaryDisplayLite loaded in Watchdog mode"
+msgstr "โหลด DictionaryDisplayLite ในโหมด Watchdog แล้ว"
+
+#: dictionaryDisplayLiteCore.py:397
+msgid "E&dit"
+msgstr "แก้ไข (&D)"
+
+#: dictionaryDisplayLiteCore.py:671
+msgid "Edit Dictionary Entry"
+msgstr "แก้ไขรายการคำศัพท์ในพจนานุกรม"
+
+#: dictionaryDisplayLiteCore.py:1116
+msgid "Empty pattern (line {lineNumber})"
+msgstr "รูปแบบว่างเปล่า (บรรทัด {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:529
+msgid "Entry added"
+msgstr "เพิ่มรายการแล้ว"
+
+#: dictionaryDisplayLiteCore.py:573
+msgid "Entry removed"
+msgstr "ลบรายการแล้ว"
+
+#: dictionaryDisplayLiteCore.py:560
+msgid "Entry updated"
+msgstr "อัปเดตรายการแล้ว"
+
+#: dictionaryDisplayLiteCore.py:1146
+msgid "Invalid regular expression \"{pattern}\" - {error} (line {lineNumber})"
+msgstr "นิพจน์ Regular Expression ไม่ถูกต้อง \"{pattern}\" - {error} (บรรทัด {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:746
+msgid "Invalid regular expression: {error}"
+msgstr "นิพจน์ Regular Expression ไม่ถูกต้อง: {error}"
+
+#: dictionaryDisplayLiteCore.py:733
+msgid "Line number must be 1 or greater"
+msgstr "หมายเลขบรรทัดต้องเป็น 1 หรือมากกว่า"
+
+#: dictionaryDisplayLiteCore.py:729
+msgid "Line number must be a whole number"
+msgstr "หมายเลขบรรทัดต้องเป็นจำนวนเต็ม"
+
+#: dictionaryDisplayLiteCore.py:1106
+msgid "Malformed entry (expected 4 tab-separated fields, found {fieldCount}) (line {lineNumber})"
+msgstr "รายการรูปแบบไม่ถูกต้อง (คาดหวังฟิลด์คั่นด้วยแท็บ 4 ฟิลด์ แต่พบ {fieldCount}) (บรรทัด {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:605
+msgid "Move &down"
+msgstr "ย้ายลง (&D)"
+
+#: dictionaryDisplayLiteCore.py:603
+msgid "Move &up"
+msgstr "ย้ายขึ้น (&U)"
+
+#: dictionaryDisplayLiteCore.py:535
+#: dictionaryDisplayLiteCore.py:566
+msgid "No dictionary entry is selected"
+msgstr "ยังไม่ได้เลือกรายการพจนานุกรมใดๆ"
+
+#: dictionaryDisplayLiteCore.py:1045
+msgid "No dictionary file was found to check"
+msgstr "ไม่พบไฟล์พจนานุกรมสำหรับตรวจสอบ"
+
+#: dictionaryDisplayLiteCore.py:1159
+msgid "No voice dictionary is available to edit"
+msgstr "ไม่มีพจนานุกรมเสียงให้แก้ไข"
+
+#: dictionaryDisplayLiteCore.py:945
+msgid "Open dictionary file"
+msgstr "เปิดไฟล์พจนานุกรม"
+
+#: dictionaryDisplayLiteCore.py:946
+msgid "Open dictionary folder"
+msgstr "เปิดโฟลเดอร์พจนานุกรม"
+
+#: dictionaryDisplayLiteCore.py:894
+msgid "Press once to open the DictionaryDisplayLite quick menu, or twice to open Search and Edit Voice Dictionary directly"
+msgstr "กดหนึ่งครั้งเพื่อเปิดเมนูด่วน DictionaryDisplayLite หรือกดสองครั้งเพื่อเปิดหน้าค้นหาและแก้ไขพจนานุกรมเสียงโดยตรง"
+
+#: dictionaryDisplayLiteCore.py:863
+msgid "Press once to open the Voice dictionary, twice for the Default dictionary, or three times for the Temporary dictionary"
+msgstr "กดหนึ่งครั้งเพื่อเปิดพจนานุกรมเสียง, กดสองครั้งสำหรับพจนานุกรมเริ่มต้น, หรือกดสามครั้งสำหรับพจนานุกรมชั่วคราว"
+
+#: dictionaryDisplayLiteCore.py:89
+msgid "Regular expression"
+msgstr "Regular expression (นิพจน์ regular)"
+
+#: dictionaryDisplayLiteCore.py:683
+msgid "Rep&lace:"
+msgstr "แทนที่ด้วย (&L):"
+
+#: dictionaryDisplayLiteCore.py:364
+#: dictionaryDisplayLiteCore.py:950
+msgid "Search and Edit Voice Dictionary"
+msgstr "ค้นหาและแก้ไขพจนานุกรมเสียง"
+
+#: dictionaryDisplayLiteCore.py:923
+msgid "Temporary dictionary"
+msgstr "พจนานุกรมชั่วคราว"
+
+#: dictionaryDisplayLiteCore.py:723
+msgid "The pattern cannot be empty"
+msgstr "รูปแบบต้องไม่ว่างเปล่า"
+
+#: dictionaryDisplayLiteCore.py:692
+msgid "Type"
+msgstr "ประเภท"
+
+#: dictionaryDisplayLiteCore.py:1129
+msgid "Unrecognized case-sensitivity flag (line {lineNumber})"
+msgstr "ไม่รู้จักแฟล็กการตรงตัวพิมพ์เล็ก-ใหญ่ (บรรทัด {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:1122
+msgid "Unrecognized entry type \"{typeFlag}\" (line {lineNumber})"
+msgstr "ไม่รู้จักประเภทรายการ \"{typeFlag}\" (บรรทัด {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:378
+msgid "Use regular &expression for search"
+msgstr "ใช้ regular &expression ในการค้นหา"
+
+#: dictionaryDisplayLiteCore.py:921
+#: dictionaryDisplayLiteCore.py:1031
+msgid "Voice dictionary"
+msgstr "พจนานุกรมเสียง"
+
+#: dictionaryDisplayLiteCore.py:88
+msgid "Whole word"
+msgstr "ทั้งคำ"
+
+#: dictionaryDisplayLiteCore.py:794
+msgid "default"
+msgstr "เริ่มต้น"
+
+#: dictionaryDisplayLiteCore.py:793
+msgid "dictionary"
+msgstr "พจนานุกรม"
+
+#: dictionaryDisplayLiteCore.py:796
+msgid "temporary"
+msgstr "ชั่วคราว"
+
+#: dictionaryDisplayLiteCore.py:795
+msgid "voice"
+msgstr "เสียง"
+
+#: dictionaryDisplayLiteCore.py:475
+msgid "{count} results found"
+msgstr "พบ {count} ผลลัพธ์"
+
+#: dictionaryDisplayLiteCore.py:985
+msgid "{label} has no file on disk yet"
+msgstr "{label} ยังไม่มีไฟล์อยู่บนดิสก์"
+
+#: dictionaryDisplayLiteCore.py:1002
+msgid "{label} has no folder on disk yet"
+msgstr "{label} ยังไม่มีโฟลเดอร์อยู่บนดิสก์"
+
+#: dictionaryDisplayLiteCore.py:448
+msgid "{pattern} → {replacement} (line {line})"
+msgstr "{pattern} → {replacement} (บรรทัด {line})"

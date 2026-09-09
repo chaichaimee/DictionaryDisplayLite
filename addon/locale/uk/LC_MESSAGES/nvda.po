@@ -5,8 +5,8 @@ msgstr ""
 "POT-Creation-Date: 2026-09-09 16:27+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: chaiBot and Malee Yamazaki\n"
-"Language-Team: English\n"
-"Language: en\n"
+"Language-Team: Ukrainian\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,262 +14,262 @@ msgstr ""
 
 #: dictionaryDisplayLiteCore.py:395
 msgid "&Add"
-msgstr "&Add"
+msgstr "&Додати"
 
 #: dictionaryDisplayLiteCore.py:697
 msgid "&Line number:"
-msgstr "&Line number:"
+msgstr "Номер &рядка:"
 
 #: dictionaryDisplayLiteCore.py:681
 msgid "&Pattern:"
-msgstr "&Pattern:"
+msgstr "&Шаблон:"
 
 #: dictionaryDisplayLiteCore.py:399
 #: dictionaryDisplayLiteCore.py:607
 msgid "&Remove"
-msgstr "&Remove"
+msgstr "&Видалити"
 
 #: dictionaryDisplayLiteCore.py:384
 msgid "&Search:"
-msgstr "&Search:"
+msgstr "По&шук:"
 
 #: dictionaryDisplayLiteCore.py:671
 msgid "Add Dictionary Entry"
-msgstr "Add Dictionary Entry"
+msgstr "Додати словникову статтю"
 
 #: dictionaryDisplayLiteCore.py:87
 msgid "Anywhere"
-msgstr "Anywhere"
+msgstr "Будь-де"
 
 #: dictionaryDisplayLiteCore.py:686
 msgid "Case &sensitive"
-msgstr "Case &sensitive"
+msgstr "З врахуванням &регістра"
 
 #: dictionaryDisplayLiteCore.py:948
 msgid "Check dictionary error"
-msgstr "Check dictionary error"
+msgstr "Перевірити словник на помилки"
 
 #: dictionaryDisplayLiteCore.py:1014
 msgid "Checking dictionaries for errors, please wait"
-msgstr "Checking dictionaries for errors, please wait"
+msgstr "Перевірка словників на наявність помилок, зачекайте, будь ласка"
 
 #: dictionaryDisplayLiteCore.py:578
 msgid "Clear the search box to reorder entries"
-msgstr "Clear the search box to reorder entries"
+msgstr "Очистіть поле пошуку, щоб змінити порядок записів"
 
 #: dictionaryDisplayLiteCore.py:277
 msgid "Condense dictionary entries in the list (shorten spoken labels)"
-msgstr "Condense dictionary entries in the list (shorten spoken labels)"
+msgstr "Зтиснути словникові статті у списку (скоротити озвучувані мітки)"
 
 #: dictionaryDisplayLiteCore.py:1074
 msgid "Could not open the dictionary error report"
-msgstr "Could not open the dictionary error report"
+msgstr "Не вдалося відкрити звіт про помилки словника"
 
 #: dictionaryDisplayLiteCore.py:993
 msgid "Could not open the dictionary file"
-msgstr "Could not open the dictionary file"
+msgstr "Не вдалося відкрити файл словника"
 
 #: dictionaryDisplayLiteCore.py:1010
 msgid "Could not open the dictionary folder"
-msgstr "Could not open the dictionary folder"
+msgstr "Не вдалося відкрити папку словника"
 
 #: dictionaryDisplayLiteCore.py:1095
 msgid "Could not read this dictionary file: {error}"
-msgstr "Could not read this dictionary file: {error}"
+msgstr "Не вдалося прочитати цей файл словника: {error}"
 
 #: dictionaryDisplayLiteCore.py:66
 msgid "Could not save DictionaryDisplayLite settings."
-msgstr "Could not save DictionaryDisplayLite settings."
+msgstr "Не вдалося зберегти налаштування DictionaryDisplayLite."
 
 #: dictionaryDisplayLiteCore.py:598
 msgid "Could not save the voice dictionary file"
-msgstr "Could not save the voice dictionary file"
+msgstr "Не вдалося зберегти файл голосового словника"
 
 #: dictionaryDisplayLiteCore.py:1063
 msgid "Could not write the dictionary error report"
-msgstr "Could not write the dictionary error report"
+msgstr "Не вдалося записати звіт про помилки словника"
 
 #: dictionaryDisplayLiteCore.py:922
 #: dictionaryDisplayLiteCore.py:1032
 msgid "Default dictionary"
-msgstr "Default dictionary"
+msgstr "Словник за замовчуванням"
 
 #: dictionaryDisplayLiteCore.py:389
 msgid "Dictionary &entries"
-msgstr "Dictionary &entries"
+msgstr "Словникові &статті"
 
 #: dictionaryDisplayLiteCore.py:1050
 msgid "Dictionary check complete. No problems were found"
-msgstr "Dictionary check complete. No problems were found"
+msgstr "Перевірку словника завершено. Проблем не виявлено"
 
 #: dictionaryDisplayLiteCore.py:1068
 msgid "Dictionary check complete. Problems were found, opening the report"
-msgstr "Dictionary check complete. Problems were found, opening the report"
+msgstr "Перевірку словника завершено. Виявлено проблеми, відкриття звіту"
 
 #: dictionaryDisplayLiteCore.py:270
 #: dictionaryDisplayLiteCore.py:951
 msgid "DictionaryDisplayLite Settings"
-msgstr "DictionaryDisplayLite Settings"
+msgstr "Налаштування DictionaryDisplayLite"
 
 #: dictionaryDisplayLiteCore.py:766
 msgid "DictionaryDisplayLite loaded in Watchdog mode"
-msgstr "DictionaryDisplayLite loaded in Watchdog mode"
+msgstr "DictionaryDisplayLite завантажено в режимі Watchdog"
 
 #: dictionaryDisplayLiteCore.py:397
 msgid "E&dit"
-msgstr "E&dit"
+msgstr "&Змінити"
 
 #: dictionaryDisplayLiteCore.py:671
 msgid "Edit Dictionary Entry"
-msgstr "Edit Dictionary Entry"
+msgstr "Редагувати словникову статтю"
 
 #: dictionaryDisplayLiteCore.py:1116
 msgid "Empty pattern (line {lineNumber})"
-msgstr "Empty pattern (line {lineNumber})"
+msgstr "Порожній шаблон (рядок {lineNumber})"
 
 #: dictionaryDisplayLiteCore.py:529
 msgid "Entry added"
-msgstr "Entry added"
+msgstr "Запис додано"
 
 #: dictionaryDisplayLiteCore.py:573
 msgid "Entry removed"
-msgstr "Entry removed"
+msgstr "Запис видалено"
 
 #: dictionaryDisplayLiteCore.py:560
 msgid "Entry updated"
-msgstr "Entry updated"
+msgstr "Запис оновлено"
 
 #: dictionaryDisplayLiteCore.py:1146
 msgid "Invalid regular expression \"{pattern}\" - {error} (line {lineNumber})"
-msgstr "Invalid regular expression \"{pattern}\" - {error} (line {lineNumber})"
+msgstr "Неприпустимий регулярний вираз \"{pattern}\" - {error} (рядок {lineNumber})"
 
 #: dictionaryDisplayLiteCore.py:746
 msgid "Invalid regular expression: {error}"
-msgstr "Invalid regular expression: {error}"
+msgstr "Неприпустимий регулярний вираз: {error}"
 
 #: dictionaryDisplayLiteCore.py:733
 msgid "Line number must be 1 or greater"
-msgstr "Line number must be 1 or greater"
+msgstr "Номер рядка має бути 1 або більше"
 
 #: dictionaryDisplayLiteCore.py:729
 msgid "Line number must be a whole number"
-msgstr "Line number must be a whole number"
+msgstr "Номер рядка має бути цілим числом"
 
 #: dictionaryDisplayLiteCore.py:1106
 msgid "Malformed entry (expected 4 tab-separated fields, found {fieldCount}) (line {lineNumber})"
-msgstr "Malformed entry (expected 4 tab-separated fields, found {fieldCount}) (line {lineNumber})"
+msgstr "Пошкоджений запис (очікувалося 4 поля, розділених табуляцією, знайдено {fieldCount}) (рядок {lineNumber})"
 
 #: dictionaryDisplayLiteCore.py:605
 msgid "Move &down"
-msgstr "Move &down"
+msgstr "Перемістити &вниз"
 
 #: dictionaryDisplayLiteCore.py:603
 msgid "Move &up"
-msgstr "Move &up"
+msgstr "Перемістити в&гору"
 
 #: dictionaryDisplayLiteCore.py:535
 #: dictionaryDisplayLiteCore.py:566
 msgid "No dictionary entry is selected"
-msgstr "No dictionary entry is selected"
+msgstr "Жодної словникової статті не вибрано"
 
 #: dictionaryDisplayLiteCore.py:1045
 msgid "No dictionary file was found to check"
-msgstr "No dictionary file was found to check"
+msgstr "Не знайдено жодного файлу словника для перевірки"
 
 #: dictionaryDisplayLiteCore.py:1159
 msgid "No voice dictionary is available to edit"
-msgstr "No voice dictionary is available to edit"
+msgstr "Немає доступного голосового словника для редагування"
 
 #: dictionaryDisplayLiteCore.py:945
 msgid "Open dictionary file"
-msgstr "Open dictionary file"
+msgstr "Відкрити файл словника"
 
 #: dictionaryDisplayLiteCore.py:946
 msgid "Open dictionary folder"
-msgstr "Open dictionary folder"
+msgstr "Відкрити папку словника"
 
 #: dictionaryDisplayLiteCore.py:894
 msgid "Press once to open the DictionaryDisplayLite quick menu, or twice to open Search and Edit Voice Dictionary directly"
-msgstr "Press once to open the DictionaryDisplayLite quick menu, or twice to open Search and Edit Voice Dictionary directly"
+msgstr "Натисніть один раз, щоб відкрити швидке меню DictionaryDisplayLite, або двічі, щоб одразу відкрити пошук та редагування голосового словника"
 
 #: dictionaryDisplayLiteCore.py:863
 msgid "Press once to open the Voice dictionary, twice for the Default dictionary, or three times for the Temporary dictionary"
-msgstr "Press once to open the Voice dictionary, twice for the Default dictionary, or three times for the Temporary dictionary"
+msgstr "Натисніть один раз для відкриття голосового словника, двічі для словника за замовчуванням або тричі для тимчасового словника"
 
 #: dictionaryDisplayLiteCore.py:89
 msgid "Regular expression"
-msgstr "Regular expression"
+msgstr "Регулярний вираз"
 
 #: dictionaryDisplayLiteCore.py:683
 msgid "Rep&lace:"
-msgstr "Rep&lace:"
+msgstr "За&мінити на:"
 
 #: dictionaryDisplayLiteCore.py:364
 #: dictionaryDisplayLiteCore.py:950
 msgid "Search and Edit Voice Dictionary"
-msgstr "Search and Edit Voice Dictionary"
+msgstr "Пошук та редагування голосового словника"
 
 #: dictionaryDisplayLiteCore.py:923
 msgid "Temporary dictionary"
-msgstr "Temporary dictionary"
+msgstr "Тимчасовий словник"
 
 #: dictionaryDisplayLiteCore.py:723
 msgid "The pattern cannot be empty"
-msgstr "The pattern cannot be empty"
+msgstr "Шаблон не може бути порожнім"
 
 #: dictionaryDisplayLiteCore.py:692
 msgid "Type"
-msgstr "Type"
+msgstr "Тип"
 
 #: dictionaryDisplayLiteCore.py:1129
 msgid "Unrecognized case-sensitivity flag (line {lineNumber})"
-msgstr "Unrecognized case-sensitivity flag (line {lineNumber})"
+msgstr "Нерозпізнаний прапорець чутливості до регістра (рядок {lineNumber})"
 
 #: dictionaryDisplayLiteCore.py:1122
 msgid "Unrecognized entry type \"{typeFlag}\" (line {lineNumber})"
-msgstr "Unrecognized entry type \"{typeFlag}\" (line {lineNumber})"
+msgstr "Нерозпізнаний тип запису \"{typeFlag}\" (рядок {lineNumber})"
 
 #: dictionaryDisplayLiteCore.py:378
 msgid "Use regular &expression for search"
-msgstr "Use regular &expression for search"
+msgstr "Використовувати регулярний &вираз для пошуку"
 
 #: dictionaryDisplayLiteCore.py:921
 #: dictionaryDisplayLiteCore.py:1031
 msgid "Voice dictionary"
-msgstr "Voice dictionary"
+msgstr "Голосовий словник"
 
 #: dictionaryDisplayLiteCore.py:88
 msgid "Whole word"
-msgstr "Whole word"
+msgstr "Ціле слово"
 
 #: dictionaryDisplayLiteCore.py:794
 msgid "default"
-msgstr "default"
+msgstr "за замовчуванням"
 
 #: dictionaryDisplayLiteCore.py:793
 msgid "dictionary"
-msgstr "dictionary"
+msgstr "словник"
 
 #: dictionaryDisplayLiteCore.py:796
 msgid "temporary"
-msgstr "temporary"
+msgstr "тимчасовий"
 
 #: dictionaryDisplayLiteCore.py:795
 msgid "voice"
-msgstr "voice"
+msgstr "голосовий"
 
 #: dictionaryDisplayLiteCore.py:475
 msgid "{count} results found"
-msgstr "{count} results found"
+msgstr "Знайдено результатів: {count}"
 
 #: dictionaryDisplayLiteCore.py:985
 msgid "{label} has no file on disk yet"
-msgstr "{label} has no file on disk yet"
+msgstr "{label} ще не має файлу на диску"
 
 #: dictionaryDisplayLiteCore.py:1002
 msgid "{label} has no folder on disk yet"
-msgstr "{label} has no folder on disk yet"
+msgstr "{label} ще не має папки на диску"
 
 #: dictionaryDisplayLiteCore.py:448
 msgid "{pattern} → {replacement} (line {line})"
-msgstr "{pattern} → {replacement} (line {line})"
+msgstr "{pattern} → {replacement} (рядок {line})"

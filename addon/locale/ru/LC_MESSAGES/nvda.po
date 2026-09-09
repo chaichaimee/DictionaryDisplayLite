@@ -1,33 +1,275 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: DictionaryDisplayLite 2026.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-27 18:57+0700\n"
+"Project-Id-Version: DictionaryDisplayLite 2026.9.9\n"
+"Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
+"POT-Creation-Date: 2026-09-09 16:27+0700\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Anonymous <anonymous@example.com>\n"
+"Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: NVDA DevOn Addon\n"
+"X-Generator: DevOn Addon\n"
 
-#: __init__.py:23
-msgid "DictionaryDisplayLite loaded"
-msgstr "DictionaryDisplayLite загружен"
+#: dictionaryDisplayLiteCore.py:395
+msgid "&Add"
+msgstr "&Добавить"
 
-#: __init__.py:71
+#: dictionaryDisplayLiteCore.py:697
+msgid "&Line number:"
+msgstr "Номер &строки:"
+
+#: dictionaryDisplayLiteCore.py:681
+msgid "&Pattern:"
+msgstr "&Шаблон:"
+
+#: dictionaryDisplayLiteCore.py:399
+#: dictionaryDisplayLiteCore.py:607
+msgid "&Remove"
+msgstr "&Удалить"
+
+#: dictionaryDisplayLiteCore.py:384
+msgid "&Search:"
+msgstr "По&иск:"
+
+#: dictionaryDisplayLiteCore.py:671
+msgid "Add Dictionary Entry"
+msgstr "Добавить словарную статью"
+
+#: dictionaryDisplayLiteCore.py:87
+msgid "Anywhere"
+msgstr "Везде"
+
+#: dictionaryDisplayLiteCore.py:686
+msgid "Case &sensitive"
+msgstr "С учетом &регистра"
+
+#: dictionaryDisplayLiteCore.py:948
+msgid "Check dictionary error"
+msgstr "Проверить словарь на ошибки"
+
+#: dictionaryDisplayLiteCore.py:1014
+msgid "Checking dictionaries for errors, please wait"
+msgstr "Проверка словарей на ошибки, пожалуйста, подождите"
+
+#: dictionaryDisplayLiteCore.py:578
+msgid "Clear the search box to reorder entries"
+msgstr "Очистите поле поиска для изменения порядка записей"
+
+#: dictionaryDisplayLiteCore.py:277
+msgid "Condense dictionary entries in the list (shorten spoken labels)"
+msgstr "Сжать словарные статьи в списке (сократить произносимые метки)"
+
+#: dictionaryDisplayLiteCore.py:1074
+msgid "Could not open the dictionary error report"
+msgstr "Не удалось открыть отчет об ошибках словаря"
+
+#: dictionaryDisplayLiteCore.py:993
+msgid "Could not open the dictionary file"
+msgstr "Не удалось открыть файл словаря"
+
+#: dictionaryDisplayLiteCore.py:1010
+msgid "Could not open the dictionary folder"
+msgstr "Не удалось открыть папку словаря"
+
+#: dictionaryDisplayLiteCore.py:1095
+msgid "Could not read this dictionary file: {error}"
+msgstr "Не удалось прочитать этот файл словаря: {error}"
+
+#: dictionaryDisplayLiteCore.py:66
+msgid "Could not save DictionaryDisplayLite settings."
+msgstr "Не удалось сохранить настройки DictionaryDisplayLite."
+
+#: dictionaryDisplayLiteCore.py:598
+msgid "Could not save the voice dictionary file"
+msgstr "Не удалось сохранить файл голосового словаря"
+
+#: dictionaryDisplayLiteCore.py:1063
+msgid "Could not write the dictionary error report"
+msgstr "Не удалось записать отчет об ошибках словаря"
+
+#: dictionaryDisplayLiteCore.py:922
+#: dictionaryDisplayLiteCore.py:1032
+msgid "Default dictionary"
+msgstr "Словарь по умолчанию"
+
+#: dictionaryDisplayLiteCore.py:389
+msgid "Dictionary &entries"
+msgstr "Словарные &статьи"
+
+#: dictionaryDisplayLiteCore.py:1050
+msgid "Dictionary check complete. No problems were found"
+msgstr "Проверка словаря завершена. Проблем не обнаружено"
+
+#: dictionaryDisplayLiteCore.py:1068
+msgid "Dictionary check complete. Problems were found, opening the report"
+msgstr "Проверка словаря завершена. Обнаружены проблемы, открывается отчет"
+
+#: dictionaryDisplayLiteCore.py:270
+#: dictionaryDisplayLiteCore.py:951
+msgid "DictionaryDisplayLite Settings"
+msgstr "Настройки DictionaryDisplayLite"
+
+#: dictionaryDisplayLiteCore.py:766
+msgid "DictionaryDisplayLite loaded in Watchdog mode"
+msgstr "DictionaryDisplayLite загружен в режиме Watchdog"
+
+#: dictionaryDisplayLiteCore.py:397
+msgid "E&dit"
+msgstr "И&зменить"
+
+#: dictionaryDisplayLiteCore.py:671
+msgid "Edit Dictionary Entry"
+msgstr "Редактировать словарную статью"
+
+#: dictionaryDisplayLiteCore.py:1116
+msgid "Empty pattern (line {lineNumber})"
+msgstr "Пустой шаблон (строка {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:529
+msgid "Entry added"
+msgstr "Запись добавлена"
+
+#: dictionaryDisplayLiteCore.py:573
+msgid "Entry removed"
+msgstr "Запись удалена"
+
+#: dictionaryDisplayLiteCore.py:560
+msgid "Entry updated"
+msgstr "Запись обновлена"
+
+#: dictionaryDisplayLiteCore.py:1146
+msgid "Invalid regular expression \"{pattern}\" - {error} (line {lineNumber})"
+msgstr "Недопустимое регулярное выражение \"{pattern}\" - {error} (строка {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:746
+msgid "Invalid regular expression: {error}"
+msgstr "Недопустимое регулярное выражение: {error}"
+
+#: dictionaryDisplayLiteCore.py:733
+msgid "Line number must be 1 or greater"
+msgstr "Номер строки должен быть 1 или больше"
+
+#: dictionaryDisplayLiteCore.py:729
+msgid "Line number must be a whole number"
+msgstr "Номер строки должен быть целым числом"
+
+#: dictionaryDisplayLiteCore.py:1106
+msgid "Malformed entry (expected 4 tab-separated fields, found {fieldCount}) (line {lineNumber})"
+msgstr "Неправильный формат записи (ожидалось 4 поля, разделенных табуляцией, найдено {fieldCount}) (строка {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:605
+msgid "Move &down"
+msgstr "Сместить &вниз"
+
+#: dictionaryDisplayLiteCore.py:603
+msgid "Move &up"
+msgstr "Сместить &вверх"
+
+#: dictionaryDisplayLiteCore.py:535
+#: dictionaryDisplayLiteCore.py:566
+msgid "No dictionary entry is selected"
+msgstr "Словарная статья не выбрана"
+
+#: dictionaryDisplayLiteCore.py:1045
+msgid "No dictionary file was found to check"
+msgstr "Не найдено файлов словаря для проверки"
+
+#: dictionaryDisplayLiteCore.py:1159
+msgid "No voice dictionary is available to edit"
+msgstr "Нет доступных голосовых словарей для редактирования"
+
+#: dictionaryDisplayLiteCore.py:945
+msgid "Open dictionary file"
+msgstr "Открыть файл словаря"
+
+#: dictionaryDisplayLiteCore.py:946
+msgid "Open dictionary folder"
+msgstr "Открыть папку словаря"
+
+#: dictionaryDisplayLiteCore.py:894
+msgid "Press once to open the DictionaryDisplayLite quick menu, or twice to open Search and Edit Voice Dictionary directly"
+msgstr "Нажмите один раз, чтобы открыть быстрое меню DictionaryDisplayLite, или дважды, чтобы сразу открыть поиск и редактирование голосового словаря"
+
+#: dictionaryDisplayLiteCore.py:863
+msgid "Press once to open the Voice dictionary, twice for the Default dictionary, or three times for the Temporary dictionary"
+msgstr "Нажмите один раз для открытия голосового словаря, дважды для словаря по умолчанию или трижды для временного словаря"
+
+#: dictionaryDisplayLiteCore.py:89
+msgid "Regular expression"
+msgstr "Регулярное выражение"
+
+#: dictionaryDisplayLiteCore.py:683
+msgid "Rep&lace:"
+msgstr "&Заменить на:"
+
+#: dictionaryDisplayLiteCore.py:364
+#: dictionaryDisplayLiteCore.py:950
+msgid "Search and Edit Voice Dictionary"
+msgstr "Поиск и редактирование голосового словаря"
+
+#: dictionaryDisplayLiteCore.py:923
+msgid "Temporary dictionary"
+msgstr "Временный словарь"
+
+#: dictionaryDisplayLiteCore.py:723
+msgid "The pattern cannot be empty"
+msgstr "Шаблон не может быть пустым"
+
+#: dictionaryDisplayLiteCore.py:692
+msgid "Type"
+msgstr "Тип"
+
+#: dictionaryDisplayLiteCore.py:1129
+msgid "Unrecognized case-sensitivity flag (line {lineNumber})"
+msgstr "Нераспознанный флаг учета регистра (строка {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:1122
+msgid "Unrecognized entry type \"{typeFlag}\" (line {lineNumber})"
+msgstr "Нераспознанный тип записи \"{typeFlag}\" (строка {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:378
+msgid "Use regular &expression for search"
+msgstr "Использовать регулярное &выражение для поиска"
+
+#: dictionaryDisplayLiteCore.py:921
+#: dictionaryDisplayLiteCore.py:1031
+msgid "Voice dictionary"
+msgstr "Голосовой словарь"
+
+#: dictionaryDisplayLiteCore.py:88
+msgid "Whole word"
+msgstr "Целое слово"
+
+#: dictionaryDisplayLiteCore.py:794
 msgid "default"
-msgstr "стандартный"
+msgstr "по умолчанию"
 
-#: __init__.py:67
+#: dictionaryDisplayLiteCore.py:793
 msgid "dictionary"
 msgstr "словарь"
 
-#: __init__.py:71
+#: dictionaryDisplayLiteCore.py:796
 msgid "temporary"
 msgstr "временный"
 
-#: __init__.py:71
+#: dictionaryDisplayLiteCore.py:795
 msgid "voice"
-msgstr "голос"
+msgstr "голосовой"
+
+#: dictionaryDisplayLiteCore.py:475
+msgid "{count} results found"
+msgstr "Найдено результатов: {count}"
+
+#: dictionaryDisplayLiteCore.py:985
+msgid "{label} has no file on disk yet"
+msgstr "У {label} пока нет файла на диске"
+
+#: dictionaryDisplayLiteCore.py:1002
+msgid "{label} has no folder on disk yet"
+msgstr "У {label} пока нет папки на диске"
+
+#: dictionaryDisplayLiteCore.py:448
+msgid "{pattern} → {replacement} (line {line})"
+msgstr "{pattern} → {replacement} (строка {line})"

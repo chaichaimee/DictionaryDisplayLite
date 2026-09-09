@@ -1,33 +1,275 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: DictionaryDisplayLite 2026.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-27 18:57+0700\n"
+"Project-Id-Version: DictionaryDisplayLite 2026.9.9\n"
+"Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
+"POT-Creation-Date: 2026-09-09 16:27+0700\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Anonymous <anonymous@example.com>\n"
+"Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: NVDA DevOn Addon\n"
+"X-Generator: DevOn Addon\n"
 
-#: __init__.py:23
-msgid "DictionaryDisplayLite loaded"
-msgstr "DictionaryDisplayLite cargado"
+#: dictionaryDisplayLiteCore.py:395
+msgid "&Add"
+msgstr "&Añadir"
 
-#: __init__.py:71
+#: dictionaryDisplayLiteCore.py:697
+msgid "&Line number:"
+msgstr "Número de &línea:"
+
+#: dictionaryDisplayLiteCore.py:681
+msgid "&Pattern:"
+msgstr "&Patrón:"
+
+#: dictionaryDisplayLiteCore.py:399
+#: dictionaryDisplayLiteCore.py:607
+msgid "&Remove"
+msgstr "&Eliminar"
+
+#: dictionaryDisplayLiteCore.py:384
+msgid "&Search:"
+msgstr "Bu&scar:"
+
+#: dictionaryDisplayLiteCore.py:671
+msgid "Add Dictionary Entry"
+msgstr "Añadir entrada al diccionario"
+
+#: dictionaryDisplayLiteCore.py:87
+msgid "Anywhere"
+msgstr "En cualquier lugar"
+
+#: dictionaryDisplayLiteCore.py:686
+msgid "Case &sensitive"
+msgstr "D&istinguir mayúsculas y minúsculas"
+
+#: dictionaryDisplayLiteCore.py:948
+msgid "Check dictionary error"
+msgstr "Comprobar errores del diccionario"
+
+#: dictionaryDisplayLiteCore.py:1014
+msgid "Checking dictionaries for errors, please wait"
+msgstr "Comprobando errores en los diccionarios, espere por favor"
+
+#: dictionaryDisplayLiteCore.py:578
+msgid "Clear the search box to reorder entries"
+msgstr "Borre el cuadro de búsqueda para reordenar las entradas"
+
+#: dictionaryDisplayLiteCore.py:277
+msgid "Condense dictionary entries in the list (shorten spoken labels)"
+msgstr "Condensar entradas del diccionario en la lista (acortar etiquetas habladas)"
+
+#: dictionaryDisplayLiteCore.py:1074
+msgid "Could not open the dictionary error report"
+msgstr "No se pudo abrir el informe de errores del diccionario"
+
+#: dictionaryDisplayLiteCore.py:993
+msgid "Could not open the dictionary file"
+msgstr "No se pudo abrir el archivo del diccionario"
+
+#: dictionaryDisplayLiteCore.py:1010
+msgid "Could not open the dictionary folder"
+msgstr "No se pudo abrir la carpeta del diccionario"
+
+#: dictionaryDisplayLiteCore.py:1095
+msgid "Could not read this dictionary file: {error}"
+msgstr "No se pudo leer este archivo de diccionario: {error}"
+
+#: dictionaryDisplayLiteCore.py:66
+msgid "Could not save DictionaryDisplayLite settings."
+msgstr "No se pudieron guardar la configuración de DictionaryDisplayLite."
+
+#: dictionaryDisplayLiteCore.py:598
+msgid "Could not save the voice dictionary file"
+msgstr "No se pudo guardar el archivo del diccionario de voz"
+
+#: dictionaryDisplayLiteCore.py:1063
+msgid "Could not write the dictionary error report"
+msgstr "No se pudo escribir el informe de errores del diccionario"
+
+#: dictionaryDisplayLiteCore.py:922
+#: dictionaryDisplayLiteCore.py:1032
+msgid "Default dictionary"
+msgstr "Diccionario predeterminado"
+
+#: dictionaryDisplayLiteCore.py:389
+msgid "Dictionary &entries"
+msgstr "&Entradas del diccionario"
+
+#: dictionaryDisplayLiteCore.py:1050
+msgid "Dictionary check complete. No problems were found"
+msgstr "Comprobación del diccionario completa. No se encontraron problemas"
+
+#: dictionaryDisplayLiteCore.py:1068
+msgid "Dictionary check complete. Problems were found, opening the report"
+msgstr "Comprobación del diccionario completa. Se encontraron problemas, abriendo el informe"
+
+#: dictionaryDisplayLiteCore.py:270
+#: dictionaryDisplayLiteCore.py:951
+msgid "DictionaryDisplayLite Settings"
+msgstr "Configuración de DictionaryDisplayLite"
+
+#: dictionaryDisplayLiteCore.py:766
+msgid "DictionaryDisplayLite loaded in Watchdog mode"
+msgstr "DictionaryDisplayLite cargado en modo Watchdog"
+
+#: dictionaryDisplayLiteCore.py:397
+msgid "E&dit"
+msgstr "&Editar"
+
+#: dictionaryDisplayLiteCore.py:671
+msgid "Edit Dictionary Entry"
+msgstr "Editar entrada del diccionario"
+
+#: dictionaryDisplayLiteCore.py:1116
+msgid "Empty pattern (line {lineNumber})"
+msgstr "Patrón vacío (línea {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:529
+msgid "Entry added"
+msgstr "Entrada añadida"
+
+#: dictionaryDisplayLiteCore.py:573
+msgid "Entry removed"
+msgstr "Entrada eliminada"
+
+#: dictionaryDisplayLiteCore.py:560
+msgid "Entry updated"
+msgstr "Entrada actualizada"
+
+#: dictionaryDisplayLiteCore.py:1146
+msgid "Invalid regular expression \"{pattern}\" - {error} (line {lineNumber})"
+msgstr "Expresión regular no válida \"{pattern}\" - {error} (línea {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:746
+msgid "Invalid regular expression: {error}"
+msgstr "Expresión regular no válida: {error}"
+
+#: dictionaryDisplayLiteCore.py:733
+msgid "Line number must be 1 or greater"
+msgstr "El número de línea debe ser 1 o mayor"
+
+#: dictionaryDisplayLiteCore.py:729
+msgid "Line number must be a whole number"
+msgstr "El número de línea debe ser un número entero"
+
+#: dictionaryDisplayLiteCore.py:1106
+msgid "Malformed entry (expected 4 tab-separated fields, found {fieldCount}) (line {lineNumber})"
+msgstr "Entrada malformada (se esperaban 4 campos separados por tabulaciones, se encontraron {fieldCount}) (línea {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:605
+msgid "Move &down"
+msgstr "Mover a&bajo"
+
+#: dictionaryDisplayLiteCore.py:603
+msgid "Move &up"
+msgstr "Mover a&rriba"
+
+#: dictionaryDisplayLiteCore.py:535
+#: dictionaryDisplayLiteCore.py:566
+msgid "No dictionary entry is selected"
+msgstr "No hay ninguna entrada de diccionario seleccionada"
+
+#: dictionaryDisplayLiteCore.py:1045
+msgid "No dictionary file was found to check"
+msgstr "No se encontró ningún archivo de diccionario para comprobar"
+
+#: dictionaryDisplayLiteCore.py:1159
+msgid "No voice dictionary is available to edit"
+msgstr "No hay ningún diccionario de voz disponible para editar"
+
+#: dictionaryDisplayLiteCore.py:945
+msgid "Open dictionary file"
+msgstr "Abrir archivo de diccionario"
+
+#: dictionaryDisplayLiteCore.py:946
+msgid "Open dictionary folder"
+msgstr "Abrir carpeta de diccionario"
+
+#: dictionaryDisplayLiteCore.py:894
+msgid "Press once to open the DictionaryDisplayLite quick menu, or twice to open Search and Edit Voice Dictionary directly"
+msgstr "Presione una vez para abrir el menú rápido de DictionaryDisplayLite, o dos veces para abrir Buscar y editar diccionario de voz directamente"
+
+#: dictionaryDisplayLiteCore.py:863
+msgid "Press once to open the Voice dictionary, twice for the Default dictionary, or three times for the Temporary dictionary"
+msgstr "Presione una vez para abrir el diccionario de voz, dos veces para el diccionario predeterminado, o tres veces para el diccionario temporal"
+
+#: dictionaryDisplayLiteCore.py:89
+msgid "Regular expression"
+msgstr "Expresión regular"
+
+#: dictionaryDisplayLiteCore.py:683
+msgid "Rep&lace:"
+msgstr "Ree&mplazar:"
+
+#: dictionaryDisplayLiteCore.py:364
+#: dictionaryDisplayLiteCore.py:950
+msgid "Search and Edit Voice Dictionary"
+msgstr "Buscar y editar diccionario de voz"
+
+#: dictionaryDisplayLiteCore.py:923
+msgid "Temporary dictionary"
+msgstr "Diccionario temporal"
+
+#: dictionaryDisplayLiteCore.py:723
+msgid "The pattern cannot be empty"
+msgstr "El patrón no puede estar vacío"
+
+#: dictionaryDisplayLiteCore.py:692
+msgid "Type"
+msgstr "Tipo"
+
+#: dictionaryDisplayLiteCore.py:1129
+msgid "Unrecognized case-sensitivity flag (line {lineNumber})"
+msgstr "Indicador de distinción de mayúsculas no reconocido (línea {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:1122
+msgid "Unrecognized entry type \"{typeFlag}\" (line {lineNumber})"
+msgstr "Tipo de entrada no reconocido \"{typeFlag}\" (línea {lineNumber})"
+
+#: dictionaryDisplayLiteCore.py:378
+msgid "Use regular &expression for search"
+msgstr "Usar &expresión regular para la búsqueda"
+
+#: dictionaryDisplayLiteCore.py:921
+#: dictionaryDisplayLiteCore.py:1031
+msgid "Voice dictionary"
+msgstr "Diccionario de voz"
+
+#: dictionaryDisplayLiteCore.py:88
+msgid "Whole word"
+msgstr "Palabra completa"
+
+#: dictionaryDisplayLiteCore.py:794
 msgid "default"
 msgstr "predeterminado"
 
-#: __init__.py:67
+#: dictionaryDisplayLiteCore.py:793
 msgid "dictionary"
 msgstr "diccionario"
 
-#: __init__.py:71
+#: dictionaryDisplayLiteCore.py:796
 msgid "temporary"
 msgstr "temporal"
 
-#: __init__.py:71
+#: dictionaryDisplayLiteCore.py:795
 msgid "voice"
 msgstr "voz"
+
+#: dictionaryDisplayLiteCore.py:475
+msgid "{count} results found"
+msgstr "{count} resultados encontrados"
+
+#: dictionaryDisplayLiteCore.py:985
+msgid "{label} has no file on disk yet"
+msgstr "{label} todavía no tiene ningún archivo en el disco"
+
+#: dictionaryDisplayLiteCore.py:1002
+msgid "{label} has no folder on disk yet"
+msgstr "{label} todavía no tiene ninguna carpeta en el disco"
+
+#: dictionaryDisplayLiteCore.py:448
+msgid "{pattern} → {replacement} (line {line})"
+msgstr "{pattern} → {replacement} (línea {line})"

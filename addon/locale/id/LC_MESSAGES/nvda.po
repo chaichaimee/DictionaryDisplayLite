@@ -5,8 +5,8 @@ msgstr ""
 "POT-Creation-Date: 2026-09-09 16:27+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: chaiBot and Malee Yamazaki\n"
-"Language-Team: English\n"
-"Language: en\n"
+"Language-Team: Indonesian\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,262 +14,262 @@ msgstr ""
 
 #: dictionaryDisplayLiteCore.py:395
 msgid "&Add"
-msgstr "&Add"
+msgstr "&Tambah"
 
 #: dictionaryDisplayLiteCore.py:697
 msgid "&Line number:"
-msgstr "&Line number:"
+msgstr "Nomor &baris:"
 
 #: dictionaryDisplayLiteCore.py:681
 msgid "&Pattern:"
-msgstr "&Pattern:"
+msgstr "&Pola:"
 
 #: dictionaryDisplayLiteCore.py:399
 #: dictionaryDisplayLiteCore.py:607
 msgid "&Remove"
-msgstr "&Remove"
+msgstr "&Hapus"
 
 #: dictionaryDisplayLiteCore.py:384
 msgid "&Search:"
-msgstr "&Search:"
+msgstr "&Cari:"
 
 #: dictionaryDisplayLiteCore.py:671
 msgid "Add Dictionary Entry"
-msgstr "Add Dictionary Entry"
+msgstr "Tambah Entri Kamus"
 
 #: dictionaryDisplayLiteCore.py:87
 msgid "Anywhere"
-msgstr "Anywhere"
+msgstr "Di mana saja"
 
 #: dictionaryDisplayLiteCore.py:686
 msgid "Case &sensitive"
-msgstr "Case &sensitive"
+msgstr "Peka huruf &besar/kecil"
 
 #: dictionaryDisplayLiteCore.py:948
 msgid "Check dictionary error"
-msgstr "Check dictionary error"
+msgstr "Periksa kesalahan kamus"
 
 #: dictionaryDisplayLiteCore.py:1014
 msgid "Checking dictionaries for errors, please wait"
-msgstr "Checking dictionaries for errors, please wait"
+msgstr "Memeriksa kesalahan pada kamus, mohon tunggu"
 
 #: dictionaryDisplayLiteCore.py:578
 msgid "Clear the search box to reorder entries"
-msgstr "Clear the search box to reorder entries"
+msgstr "Kosongkan kotak pencarian untuk mengurutkan ulang entri"
 
 #: dictionaryDisplayLiteCore.py:277
 msgid "Condense dictionary entries in the list (shorten spoken labels)"
-msgstr "Condense dictionary entries in the list (shorten spoken labels)"
+msgstr "Padatkan entri kamus dalam daftar (persingkat label yang diucapkan)"
 
 #: dictionaryDisplayLiteCore.py:1074
 msgid "Could not open the dictionary error report"
-msgstr "Could not open the dictionary error report"
+msgstr "Tidak dapat membuka laporan kesalahan kamus"
 
 #: dictionaryDisplayLiteCore.py:993
 msgid "Could not open the dictionary file"
-msgstr "Could not open the dictionary file"
+msgstr "Tidak dapat membuka berkas kamus"
 
 #: dictionaryDisplayLiteCore.py:1010
 msgid "Could not open the dictionary folder"
-msgstr "Could not open the dictionary folder"
+msgstr "Tidak dapat membuka folder kamus"
 
 #: dictionaryDisplayLiteCore.py:1095
 msgid "Could not read this dictionary file: {error}"
-msgstr "Could not read this dictionary file: {error}"
+msgstr "Tidak dapat membaca berkas kamus ini: {error}"
 
 #: dictionaryDisplayLiteCore.py:66
 msgid "Could not save DictionaryDisplayLite settings."
-msgstr "Could not save DictionaryDisplayLite settings."
+msgstr "Tidak dapat menyimpan pengaturan DictionaryDisplayLite."
 
 #: dictionaryDisplayLiteCore.py:598
 msgid "Could not save the voice dictionary file"
-msgstr "Could not save the voice dictionary file"
+msgstr "Tidak dapat menyimpan berkas kamus suara"
 
 #: dictionaryDisplayLiteCore.py:1063
 msgid "Could not write the dictionary error report"
-msgstr "Could not write the dictionary error report"
+msgstr "Tidak dapat menulis laporan kesalahan kamus"
 
 #: dictionaryDisplayLiteCore.py:922
 #: dictionaryDisplayLiteCore.py:1032
 msgid "Default dictionary"
-msgstr "Default dictionary"
+msgstr "Kamus bawaan"
 
 #: dictionaryDisplayLiteCore.py:389
 msgid "Dictionary &entries"
-msgstr "Dictionary &entries"
+msgstr "&Entri kamus"
 
 #: dictionaryDisplayLiteCore.py:1050
 msgid "Dictionary check complete. No problems were found"
-msgstr "Dictionary check complete. No problems were found"
+msgstr "Pemeriksaan kamus selesai. Tidak ada masalah yang ditemukan"
 
 #: dictionaryDisplayLiteCore.py:1068
 msgid "Dictionary check complete. Problems were found, opening the report"
-msgstr "Dictionary check complete. Problems were found, opening the report"
+msgstr "Pemeriksaan kamus selesai. Ditemukan masalah, membuka laporan"
 
 #: dictionaryDisplayLiteCore.py:270
 #: dictionaryDisplayLiteCore.py:951
 msgid "DictionaryDisplayLite Settings"
-msgstr "DictionaryDisplayLite Settings"
+msgstr "Pengaturan DictionaryDisplayLite"
 
 #: dictionaryDisplayLiteCore.py:766
 msgid "DictionaryDisplayLite loaded in Watchdog mode"
-msgstr "DictionaryDisplayLite loaded in Watchdog mode"
+msgstr "DictionaryDisplayLite dimuat dalam mode Watchdog"
 
 #: dictionaryDisplayLiteCore.py:397
 msgid "E&dit"
-msgstr "E&dit"
+msgstr "&Sunting"
 
 #: dictionaryDisplayLiteCore.py:671
 msgid "Edit Dictionary Entry"
-msgstr "Edit Dictionary Entry"
+msgstr "Sunting Entri Kamus"
 
 #: dictionaryDisplayLiteCore.py:1116
 msgid "Empty pattern (line {lineNumber})"
-msgstr "Empty pattern (line {lineNumber})"
+msgstr "Pola kosong (baris {lineNumber})"
 
 #: dictionaryDisplayLiteCore.py:529
 msgid "Entry added"
-msgstr "Entry added"
+msgstr "Entri ditambahkan"
 
 #: dictionaryDisplayLiteCore.py:573
 msgid "Entry removed"
-msgstr "Entry removed"
+msgstr "Entri dihapus"
 
 #: dictionaryDisplayLiteCore.py:560
 msgid "Entry updated"
-msgstr "Entry updated"
+msgstr "Entri diperbarui"
 
 #: dictionaryDisplayLiteCore.py:1146
 msgid "Invalid regular expression \"{pattern}\" - {error} (line {lineNumber})"
-msgstr "Invalid regular expression \"{pattern}\" - {error} (line {lineNumber})"
+msgstr "Ekspresi reguler tidak valid \"{pattern}\" - {error} (baris {lineNumber})"
 
 #: dictionaryDisplayLiteCore.py:746
 msgid "Invalid regular expression: {error}"
-msgstr "Invalid regular expression: {error}"
+msgstr "Ekspresi reguler tidak valid: {error}"
 
 #: dictionaryDisplayLiteCore.py:733
 msgid "Line number must be 1 or greater"
-msgstr "Line number must be 1 or greater"
+msgstr "Nomor baris harus 1 atau lebih besar"
 
 #: dictionaryDisplayLiteCore.py:729
 msgid "Line number must be a whole number"
-msgstr "Line number must be a whole number"
+msgstr "Nomor baris harus berupa bilangan bulat"
 
 #: dictionaryDisplayLiteCore.py:1106
 msgid "Malformed entry (expected 4 tab-separated fields, found {fieldCount}) (line {lineNumber})"
-msgstr "Malformed entry (expected 4 tab-separated fields, found {fieldCount}) (line {lineNumber})"
+msgstr "Entri cacat (diharapkan 4 kolom yang dipisahkan tab, ditemukan {fieldCount}) (baris {lineNumber})"
 
 #: dictionaryDisplayLiteCore.py:605
 msgid "Move &down"
-msgstr "Move &down"
+msgstr "Pindah ke &bawah"
 
 #: dictionaryDisplayLiteCore.py:603
 msgid "Move &up"
-msgstr "Move &up"
+msgstr "Pindah ke &atas"
 
 #: dictionaryDisplayLiteCore.py:535
 #: dictionaryDisplayLiteCore.py:566
 msgid "No dictionary entry is selected"
-msgstr "No dictionary entry is selected"
+msgstr "Tidak ada entri kamus yang dipilih"
 
 #: dictionaryDisplayLiteCore.py:1045
 msgid "No dictionary file was found to check"
-msgstr "No dictionary file was found to check"
+msgstr "Tidak ada berkas kamus yang ditemukan untuk diperiksa"
 
 #: dictionaryDisplayLiteCore.py:1159
 msgid "No voice dictionary is available to edit"
-msgstr "No voice dictionary is available to edit"
+msgstr "Tidak ada kamus suara yang tersedia untuk disunting"
 
 #: dictionaryDisplayLiteCore.py:945
 msgid "Open dictionary file"
-msgstr "Open dictionary file"
+msgstr "Buka berkas kamus"
 
 #: dictionaryDisplayLiteCore.py:946
 msgid "Open dictionary folder"
-msgstr "Open dictionary folder"
+msgstr "Buka folder kamus"
 
 #: dictionaryDisplayLiteCore.py:894
 msgid "Press once to open the DictionaryDisplayLite quick menu, or twice to open Search and Edit Voice Dictionary directly"
-msgstr "Press once to open the DictionaryDisplayLite quick menu, or twice to open Search and Edit Voice Dictionary directly"
+msgstr "Tekan sekali untuk membuka menu cepat DictionaryDisplayLite, atau dua kali untuk langsung membuka Cari dan Sunting Kamus Suara"
 
 #: dictionaryDisplayLiteCore.py:863
 msgid "Press once to open the Voice dictionary, twice for the Default dictionary, or three times for the Temporary dictionary"
-msgstr "Press once to open the Voice dictionary, twice for the Default dictionary, or three times for the Temporary dictionary"
+msgstr "Tekan sekali untuk membuka kamus Suara, dua kali untuk kamus Bawaan, atau tiga kali untuk kamus Sementara"
 
 #: dictionaryDisplayLiteCore.py:89
 msgid "Regular expression"
-msgstr "Regular expression"
+msgstr "Ekspresi reguler"
 
 #: dictionaryDisplayLiteCore.py:683
 msgid "Rep&lace:"
-msgstr "Rep&lace:"
+msgstr "Gan&ti:"
 
 #: dictionaryDisplayLiteCore.py:364
 #: dictionaryDisplayLiteCore.py:950
 msgid "Search and Edit Voice Dictionary"
-msgstr "Search and Edit Voice Dictionary"
+msgstr "Cari dan Sunting Kamus Suara"
 
 #: dictionaryDisplayLiteCore.py:923
 msgid "Temporary dictionary"
-msgstr "Temporary dictionary"
+msgstr "Kamus sementara"
 
 #: dictionaryDisplayLiteCore.py:723
 msgid "The pattern cannot be empty"
-msgstr "The pattern cannot be empty"
+msgstr "Pola tidak boleh kosong"
 
 #: dictionaryDisplayLiteCore.py:692
 msgid "Type"
-msgstr "Type"
+msgstr "Jenis"
 
 #: dictionaryDisplayLiteCore.py:1129
 msgid "Unrecognized case-sensitivity flag (line {lineNumber})"
-msgstr "Unrecognized case-sensitivity flag (line {lineNumber})"
+msgstr "Tanda kepekaan huruf tidak dikenal (baris {lineNumber})"
 
 #: dictionaryDisplayLiteCore.py:1122
 msgid "Unrecognized entry type \"{typeFlag}\" (line {lineNumber})"
-msgstr "Unrecognized entry type \"{typeFlag}\" (line {lineNumber})"
+msgstr "Jenis entri tidak dikenal \"{typeFlag}\" (baris {lineNumber})"
 
 #: dictionaryDisplayLiteCore.py:378
 msgid "Use regular &expression for search"
-msgstr "Use regular &expression for search"
+msgstr "Gunakan e&kspresi reguler untuk pencarian"
 
 #: dictionaryDisplayLiteCore.py:921
 #: dictionaryDisplayLiteCore.py:1031
 msgid "Voice dictionary"
-msgstr "Voice dictionary"
+msgstr "Kamus suara"
 
 #: dictionaryDisplayLiteCore.py:88
 msgid "Whole word"
-msgstr "Whole word"
+msgstr "Seluruh kata"
 
 #: dictionaryDisplayLiteCore.py:794
 msgid "default"
-msgstr "default"
+msgstr "bawaan"
 
 #: dictionaryDisplayLiteCore.py:793
 msgid "dictionary"
-msgstr "dictionary"
+msgstr "kamus"
 
 #: dictionaryDisplayLiteCore.py:796
 msgid "temporary"
-msgstr "temporary"
+msgstr "sementara"
 
 #: dictionaryDisplayLiteCore.py:795
 msgid "voice"
-msgstr "voice"
+msgstr "suara"
 
 #: dictionaryDisplayLiteCore.py:475
 msgid "{count} results found"
-msgstr "{count} results found"
+msgstr "{count} hasil ditemukan"
 
 #: dictionaryDisplayLiteCore.py:985
 msgid "{label} has no file on disk yet"
-msgstr "{label} has no file on disk yet"
+msgstr "{label} belum memiliki berkas di disk"
 
 #: dictionaryDisplayLiteCore.py:1002
 msgid "{label} has no folder on disk yet"
-msgstr "{label} has no folder on disk yet"
+msgstr "{label} belum memiliki folder di disk"
 
 #: dictionaryDisplayLiteCore.py:448
 msgid "{pattern} → {replacement} (line {line})"
-msgstr "{pattern} → {replacement} (line {line})"
+msgstr "{pattern} → {replacement} (baris {line})"

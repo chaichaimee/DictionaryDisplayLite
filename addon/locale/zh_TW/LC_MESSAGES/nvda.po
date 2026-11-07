@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: DictionaryDisplayLite 2026.9.9\n"
+"Project-Id-Version: DictionaryDisplayLite 2026.11.0\n"
 "Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
-"POT-Creation-Date: 2026-09-09 16:27+0700\n"
+"POT-Creation-Date: 2026-11-07 17:14+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Chinese (Traditional)\n"
@@ -10,266 +10,458 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: DevOn Addon\n"
+"X-Generator: ChaiBot Addon\n"
 
-#: dictionaryDisplayLiteCore.py:395
+#: dictionaryDisplayLiteCore.py:518
 msgid "&Add"
 msgstr "新增(&A)"
 
-#: dictionaryDisplayLiteCore.py:697
+#: reportDialog.py:63
+msgid "&Copy Report"
+msgstr "複製報告(&C)"
+
+#: reportDialog.py:199
+msgid "&Copy this issue"
+msgstr "複製此問題(&C)"
+
+#: reportDialog.py:194
+msgid "&Edit in dictionary editor"
+msgstr "在辭典編輯器中編輯(&E)"
+
+#: dictionaryDisplayLiteCore.py:793
+msgid "&Enable entry"
+msgstr "啟用項目(&E)"
+
+#: reportDialog.py:64
+msgid "&Export CSV"
+msgstr "匯出 CSV(&E)"
+
+#: reportDialog.py:50
+msgid "&Issues"
+msgstr "問題(&I)"
+
+#: dictionaryDisplayLiteCore.py:904
 msgid "&Line number:"
 msgstr "行號(&L)："
 
-#: dictionaryDisplayLiteCore.py:681
+#: reportDialog.py:197
+msgid "&Open dictionary file"
+msgstr "開啟辭典檔案(&O)"
+
+#: dictionaryDisplayLiteCore.py:888
 msgid "&Pattern:"
 msgstr "模式(&P)："
 
-#: dictionaryDisplayLiteCore.py:399
-#: dictionaryDisplayLiteCore.py:607
+#: dictionaryDisplayLiteCore.py:522
+#: dictionaryDisplayLiteCore.py:803
 msgid "&Remove"
 msgstr "移除(&R)"
 
-#: dictionaryDisplayLiteCore.py:384
+#: dictionaryDisplayLiteCore.py:507
 msgid "&Search:"
 msgstr "搜尋(&S)："
 
-#: dictionaryDisplayLiteCore.py:671
+#: launcher.py:110
+msgid ". {count} hidden by your issue type filter"
+msgstr ". 有 {count} 個項目被您的問題類型篩選器隱藏"
+
+#: dictionaryDisplayLiteCore.py:872
 msgid "Add Dictionary Entry"
 msgstr "新增詞典項目"
 
-#: dictionaryDisplayLiteCore.py:87
+#: dictionaryDisplayLiteCore.py:102
 msgid "Anywhere"
 msgstr "任何位置"
 
-#: dictionaryDisplayLiteCore.py:686
+#: dictionaryDisplayLiteCore.py:893
 msgid "Case &sensitive"
 msgstr "區分大小寫(&S)"
 
-#: dictionaryDisplayLiteCore.py:948
+#: dictionaryDisplayLiteCore.py:1173
 msgid "Check dictionary error"
 msgstr "檢查詞典錯誤"
 
-#: dictionaryDisplayLiteCore.py:1014
+#: dictionaryDisplayLiteCore.py:1241
 msgid "Checking dictionaries for errors, please wait"
 msgstr "正在檢查詞典錯誤，請稍候"
 
-#: dictionaryDisplayLiteCore.py:578
+#: launcher.py:68
+msgid "Checking dictionary"
+msgstr "正在檢查辭典"
+
+#: dictionaryDisplayLiteCore.py:766
 msgid "Clear the search box to reorder entries"
 msgstr "清除搜尋方塊以重新排序項目"
 
-#: dictionaryDisplayLiteCore.py:277
+#: reportDialog.py:65
+msgid "Close"
+msgstr "關閉"
+
+#: reportDialog.py:54
+msgid "Code"
+msgstr "代碼"
+
+#: dictionaryDisplayLiteCore.py:394
 msgid "Condense dictionary entries in the list (shorten spoken labels)"
 msgstr "精簡清單中的詞典項目（縮短語音朗讀標籤）"
 
-#: dictionaryDisplayLiteCore.py:1074
+#: dictionaryDisplayLiteCore.py:1301
 msgid "Could not open the dictionary error report"
 msgstr "無法開啟詞典錯誤報告"
 
-#: dictionaryDisplayLiteCore.py:993
+#: dictionaryDisplayLiteCore.py:1220
 msgid "Could not open the dictionary file"
 msgstr "無法開啟詞典檔案"
 
-#: dictionaryDisplayLiteCore.py:1010
+#: dictionaryDisplayLiteCore.py:1237
 msgid "Could not open the dictionary folder"
 msgstr "無法開啟詞典資料夾"
 
-#: dictionaryDisplayLiteCore.py:1095
+#: dictionaryDisplayLiteCore.py:1409
+msgid "Could not read the dictionary file. Make sure it is saved as UTF-8"
+msgstr "無法讀取辭典檔案。請確保其已儲存為 UTF-8 編碼"
+
+#: dictionaryDisplayLiteCore.py:1322
 msgid "Could not read this dictionary file: {error}"
 msgstr "無法讀取此詞典檔案：{error}"
 
-#: dictionaryDisplayLiteCore.py:66
+#: dictionaryDisplayLiteCore.py:81
 msgid "Could not save DictionaryDisplayLite settings."
 msgstr "無法儲存 DictionaryDisplayLite 設定。"
 
-#: dictionaryDisplayLiteCore.py:598
+#: dictionaryDisplayLiteCore.py:786
 msgid "Could not save the voice dictionary file"
 msgstr "無法儲存語音詞典檔案"
 
-#: dictionaryDisplayLiteCore.py:1063
+#: dictionaryDisplayLiteCore.py:1290
 msgid "Could not write the dictionary error report"
 msgstr "無法寫入詞典錯誤報告"
 
-#: dictionaryDisplayLiteCore.py:922
-#: dictionaryDisplayLiteCore.py:1032
+#: dictionaryDisplayLiteCore.py:1147
+#: dictionaryDisplayLiteCore.py:1259
 msgid "Default dictionary"
 msgstr "預設詞典"
 
-#: dictionaryDisplayLiteCore.py:389
+#: dictionaryDisplayLiteCore.py:512
 msgid "Dictionary &entries"
 msgstr "詞典項目(&E)"
 
-#: dictionaryDisplayLiteCore.py:1050
+#: reportDialog.py:31
+#: reportDialog.py:137
+msgid "Dictionary Check: {count} issue(s)"
+msgstr "辭典檢查：{count} 個問題"
+
+#: dictionaryDisplayLiteCore.py:1277
 msgid "Dictionary check complete. No problems were found"
 msgstr "詞典檢查完成。未發現問題"
 
-#: dictionaryDisplayLiteCore.py:1068
+#: dictionaryDisplayLiteCore.py:1295
 msgid "Dictionary check complete. Problems were found, opening the report"
 msgstr "詞典檢查完成。發現問題，正在開啟報告"
 
-#: dictionaryDisplayLiteCore.py:270
-#: dictionaryDisplayLiteCore.py:951
+#: launcher.py:91
+msgid "Dictionary check failed. See the NVDA log for details"
+msgstr "辭典檢查失敗。詳情請參閱 NVDA 記錄檔"
+
+#: launcher.py:103
+msgid "Dictionary check finished. {rules} rules checked: {critical} critical, {high} high, {medium} medium, {low} low"
+msgstr "辭典檢查已完成。已檢查 {rules} 個規則：{critical} 個嚴重，{high} 個高，{medium} 個中，{low} 個低"
+
+#: launcher.py:59
+msgid "Dictionary check is already running"
+msgstr "辭典檢查已经在執行中"
+
+#: dictionaryDisplayLiteCore.py:974
+msgid "DictionaryDisplayLite"
+msgstr "DictionaryDisplayLite"
+
+#: dictionaryDisplayLiteCore.py:387
+#: dictionaryDisplayLiteCore.py:1178
 msgid "DictionaryDisplayLite Settings"
 msgstr "DictionaryDisplayLite 設定"
 
-#: dictionaryDisplayLiteCore.py:766
+#: dictionaryDisplayLiteCore.py:986
 msgid "DictionaryDisplayLite loaded in Watchdog mode"
 msgstr "DictionaryDisplayLite 已在看門狗(Watchdog)模式下載入"
 
-#: dictionaryDisplayLiteCore.py:397
+#: dictionaryDisplayLiteCore.py:796
+msgid "Disa&ble entry"
+msgstr "停用項目(&B)"
+
+#: dictionaryDisplayLiteCore.py:520
 msgid "E&dit"
 msgstr "編輯(&D)"
 
-#: dictionaryDisplayLiteCore.py:671
+#: dictionaryDisplayLiteCore.py:872
 msgid "Edit Dictionary Entry"
 msgstr "編輯詞典項目"
 
-#: dictionaryDisplayLiteCore.py:1116
+#: dictionaryDisplayLiteCore.py:1343
 msgid "Empty pattern (line {lineNumber})"
 msgstr "空模式（第 {lineNumber} 行）"
 
-#: dictionaryDisplayLiteCore.py:529
+#: dictionaryDisplayLiteCore.py:694
 msgid "Entry added"
 msgstr "已新增項目"
 
-#: dictionaryDisplayLiteCore.py:573
+#: dictionaryDisplayLiteCore.py:761
+msgid "Entry disabled"
+msgstr "項目已停用"
+
+#: dictionaryDisplayLiteCore.py:758
+msgid "Entry enabled"
+msgstr "項目已啟用"
+
+#: dictionaryDisplayLiteCore.py:738
 msgid "Entry removed"
 msgstr "已移除項目"
 
-#: dictionaryDisplayLiteCore.py:560
+#: dictionaryDisplayLiteCore.py:725
 msgid "Entry updated"
 msgstr "已更新項目"
 
-#: dictionaryDisplayLiteCore.py:1146
+#: reportDialog.py:245
+msgid "Export CSV"
+msgstr "匯出 CSV"
+
+#: reportDialog.py:265
+msgid "Exported {count} issue(s) to {path}"
+msgstr "已將 {count} 個問題匯出至 {path}"
+
+#: reportDialog.py:261
+msgid "Failed to export the CSV file"
+msgstr "無法匯出 CSV 檔案"
+
+#: reportDialog.py:229
+msgid "Failed to open the dictionary file"
+msgstr "無法開啟字典檔案"
+
+#: dictionaryDisplayLiteCore.py:1373
 msgid "Invalid regular expression \"{pattern}\" - {error} (line {lineNumber})"
 msgstr "無效的正規表達式 \"{pattern}\" - {error}（第 {lineNumber} 行）"
 
-#: dictionaryDisplayLiteCore.py:746
+#: dictionaryDisplayLiteCore.py:953
 msgid "Invalid regular expression: {error}"
 msgstr "無效的正規表達式：{error}"
 
-#: dictionaryDisplayLiteCore.py:733
+#: reportDialog.py:44
+msgid "Issue &types to show (uncheck a type to hide it)"
+msgstr "要顯示的問題&類型（取消勾選類型以隱藏）"
+
+#: reportDialog.py:209
+msgid "Issue copied to clipboard"
+msgstr "已將問題複製到剪貼簿"
+
+#: reportDialog.py:54
+msgid "Line"
+msgstr "行"
+
+#: dictionaryDisplayLiteCore.py:940
 msgid "Line number must be 1 or greater"
 msgstr "行號必須大於或等於 1"
 
-#: dictionaryDisplayLiteCore.py:729
+#: dictionaryDisplayLiteCore.py:936
 msgid "Line number must be a whole number"
 msgstr "行號必須是整數"
 
-#: dictionaryDisplayLiteCore.py:1106
+#: dictionaryDisplayLiteCore.py:1333
 msgid "Malformed entry (expected 4 tab-separated fields, found {fieldCount}) (line {lineNumber})"
 msgstr "項目格式錯誤（應為 4 個分tab分隔的欄位，找到 {fieldCount} 個）（第 {lineNumber} 行）"
 
-#: dictionaryDisplayLiteCore.py:605
+#: reportDialog.py:54
+msgid "Message"
+msgstr "訊息"
+
+#: dictionaryDisplayLiteCore.py:801
 msgid "Move &down"
 msgstr "向下移動(&D)"
 
-#: dictionaryDisplayLiteCore.py:603
+#: dictionaryDisplayLiteCore.py:799
 msgid "Move &up"
 msgstr "向上移動(&U)"
 
-#: dictionaryDisplayLiteCore.py:535
-#: dictionaryDisplayLiteCore.py:566
+#: dictionaryDisplayLiteCore.py:700
+#: dictionaryDisplayLiteCore.py:731
+#: dictionaryDisplayLiteCore.py:744
 msgid "No dictionary entry is selected"
 msgstr "未選取任何詞典項目"
 
-#: dictionaryDisplayLiteCore.py:1045
+#: dictionaryDisplayLiteCore.py:1272
 msgid "No dictionary file was found to check"
 msgstr "找不到要檢查的詞典檔案"
 
-#: dictionaryDisplayLiteCore.py:1159
+#: dictionaryDisplayLiteCore.py:1386
 msgid "No voice dictionary is available to edit"
 msgstr "沒有可編輯的語音詞典"
 
-#: dictionaryDisplayLiteCore.py:945
+#: dictionaryDisplayLiteCore.py:1170
 msgid "Open dictionary file"
 msgstr "開啟詞典檔案"
 
-#: dictionaryDisplayLiteCore.py:946
+#: dictionaryDisplayLiteCore.py:1171
 msgid "Open dictionary folder"
 msgstr "開啟詞典資料夾"
 
-#: dictionaryDisplayLiteCore.py:894
-msgid "Press once to open the DictionaryDisplayLite quick menu, or twice to open Search and Edit Voice Dictionary directly"
-msgstr "按一下以開啟 DictionaryDisplayLite 快速功能表，或按兩下直接開啟「搜尋和編輯語音詞典」"
+#: reportDialog.py:231
+msgid "Opened the dictionary file. Go to line {line}"
+msgstr "已開啟字典檔案。跳至第 {line} 行"
 
-#: dictionaryDisplayLiteCore.py:863
+#: reportDialog.py:54
+msgid "Pattern"
+msgstr "模式"
+
+#: dictionaryDisplayLiteCore.py:1116
+msgid "Press once to open the DictionaryDisplayLite quick menu, twice to open Search and Edit Voice Dictionary directly, or three times to validate the speech dictionary of the current synthesizer"
+msgstr "按一下開啟「字典顯示精簡版」快速選單，按兩下直接開啟「搜尋和編輯語音字典」，或按三下驗證目前語音合成器的語音字典"
+
+#: dictionaryDisplayLiteCore.py:1085
 msgid "Press once to open the Voice dictionary, twice for the Default dictionary, or three times for the Temporary dictionary"
 msgstr "按一下開啟語音詞典，按兩下開啟預設詞典，按三下開啟臨時詞典"
 
-#: dictionaryDisplayLiteCore.py:89
+#: dictionaryDisplayLiteCore.py:104
 msgid "Regular expression"
 msgstr "正規表達式"
 
-#: dictionaryDisplayLiteCore.py:683
+#: dictionaryDisplayLiteCore.py:890
 msgid "Rep&lace:"
 msgstr "取代(&L)："
 
-#: dictionaryDisplayLiteCore.py:364
-#: dictionaryDisplayLiteCore.py:950
+#: reportDialog.py:236
+msgid "Report copied to clipboard"
+msgstr "已將報表複製到剪貼簿"
+
+#: dictionaryDisplayLiteCore.py:485
+#: dictionaryDisplayLiteCore.py:1177
 msgid "Search and Edit Voice Dictionary"
 msgstr "搜尋和編輯語音詞典"
 
-#: dictionaryDisplayLiteCore.py:923
+#: dictionaryDisplayLiteCore.py:633
+msgid "Search not run: the regular expression is not valid"
+msgstr "未執行搜尋：正規表示式無效"
+
+#: dictionaryDisplayLiteCore.py:629
+msgid "Search not run: the regular expression is too complex or too long"
+msgstr "未執行搜尋：正規表示式過於複雜或過長"
+
+#: dictionaryDisplayLiteCore.py:637
+msgid "Search stopped because it took too long. Results are incomplete"
+msgstr "搜尋因耗時過長而停止。結果不完整"
+
+#: launcher.py:44
+msgid "Select the speech dictionary file to check"
+msgstr "選取要檢查的語音字典檔案"
+
+#: reportDialog.py:54
+msgid "Severity"
+msgstr "嚴重性"
+
+#: reportDialog.py:62
+msgid "Show &all types"
+msgstr "顯示&所有類型"
+
+#: reportDialog.py:69
+msgid "Show &description of each issue"
+msgstr "顯示每個問題的&說明"
+
+#: reportDialog.py:54
+msgid "Suggestion"
+msgstr "建議"
+
+#: dictionaryDisplayLiteCore.py:1148
 msgid "Temporary dictionary"
 msgstr "臨時詞典"
 
-#: dictionaryDisplayLiteCore.py:723
+#: reportDialog.py:215
+msgid "The dictionary editor is not available"
+msgstr "字典編輯器無法使用"
+
+#: dictionaryDisplayLiteCore.py:1398
+msgid "The dictionary file was not found"
+msgstr "找不到字典檔案"
+
+#: dictionaryDisplayLiteCore.py:930
 msgid "The pattern cannot be empty"
 msgstr "模式不能為空"
 
-#: dictionaryDisplayLiteCore.py:692
+#: dictionaryDisplayLiteCore.py:749
+msgid "This entry cannot be enabled or disabled because its line is not in a valid format"
+msgstr "無法啟用或停用此項目，因為其行格式無效"
+
+#: dictionaryDisplayLiteCore.py:899
 msgid "Type"
 msgstr "類型"
 
-#: dictionaryDisplayLiteCore.py:1129
+#: dictionaryDisplayLiteCore.py:1356
 msgid "Unrecognized case-sensitivity flag (line {lineNumber})"
 msgstr "無法識別的大小寫區分旗標（第 {lineNumber} 行）"
 
-#: dictionaryDisplayLiteCore.py:1122
+#: dictionaryDisplayLiteCore.py:1349
 msgid "Unrecognized entry type \"{typeFlag}\" (line {lineNumber})"
 msgstr "無法識別的項目類型 \"{typeFlag}\"（第 {lineNumber} 行）"
 
-#: dictionaryDisplayLiteCore.py:378
+#: dictionaryDisplayLiteCore.py:501
 msgid "Use regular &expression for search"
 msgstr "使用正規表達式搜尋(&E)"
 
-#: dictionaryDisplayLiteCore.py:921
-#: dictionaryDisplayLiteCore.py:1031
+#: dictionaryDisplayLiteCore.py:1175
+msgid "Validate synthesizer dictionary"
+msgstr "驗證語音合成器字典"
+
+#: dictionaryDisplayLiteCore.py:1146
+#: dictionaryDisplayLiteCore.py:1258
 msgid "Voice dictionary"
 msgstr "語音詞典"
 
-#: dictionaryDisplayLiteCore.py:88
+#: dictionaryDisplayLiteCore.py:103
 msgid "Whole word"
 msgstr "全字拼寫"
 
-#: dictionaryDisplayLiteCore.py:794
+#: reportDialog.py:105
+#: reportDialog.py:123
+msgid "checked"
+msgstr "已勾選"
+
+#: dictionaryDisplayLiteCore.py:1016
 msgid "default"
 msgstr "預設"
 
-#: dictionaryDisplayLiteCore.py:793
+#: dictionaryDisplayLiteCore.py:1015
 msgid "dictionary"
 msgstr "詞典"
 
-#: dictionaryDisplayLiteCore.py:796
+#: reportDialog.py:105
+#: reportDialog.py:123
+msgid "not checked"
+msgstr "未勾選"
+
+#: dictionaryDisplayLiteCore.py:1018
 msgid "temporary"
 msgstr "臨時"
 
-#: dictionaryDisplayLiteCore.py:795
+#: dictionaryDisplayLiteCore.py:1017
 msgid "voice"
 msgstr "語音"
 
-#: dictionaryDisplayLiteCore.py:475
+#: reportDialog.py:146
+msgid "{count} issue(s) shown"
+msgstr "已顯示 {count} 個問題"
+
+#: dictionaryDisplayLiteCore.py:640
 msgid "{count} results found"
 msgstr "找到 {count} 個結果"
 
-#: dictionaryDisplayLiteCore.py:985
+#: dictionaryDisplayLiteCore.py:1212
 msgid "{label} has no file on disk yet"
 msgstr "{label} 磁碟上尚無檔案"
 
-#: dictionaryDisplayLiteCore.py:1002
+#: dictionaryDisplayLiteCore.py:1229
 msgid "{label} has no folder on disk yet"
 msgstr "{label} 磁碟上尚無資料夾"
 
-#: dictionaryDisplayLiteCore.py:448
+#: dictionaryDisplayLiteCore.py:602
+msgid "{label}, disabled"
+msgstr "{label}，已停用"
+
+#: dictionaryDisplayLiteCore.py:596
 msgid "{pattern} → {replacement} (line {line})"
 msgstr "{pattern} → {replacement}（第 {line} 行）"

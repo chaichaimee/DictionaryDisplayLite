@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: DictionaryDisplayLite 2026.9.9\n"
+"Project-Id-Version: DictionaryDisplayLite 2026.11.0\n"
 "Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
-"POT-Creation-Date: 2026-09-09 16:27+0700\n"
+"POT-Creation-Date: 2026-11-07 17:14+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Hindi\n"
@@ -10,266 +10,458 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: DevOn Addon\n"
+"X-Generator: ChaiBot Addon\n"
 
-#: dictionaryDisplayLiteCore.py:395
+#: dictionaryDisplayLiteCore.py:518
 msgid "&Add"
 msgstr "जोड़ें (&A)"
 
-#: dictionaryDisplayLiteCore.py:697
+#: reportDialog.py:63
+msgid "&Copy Report"
+msgstr "रिपोर्ट कॉपी करें (&C)"
+
+#: reportDialog.py:199
+msgid "&Copy this issue"
+msgstr "यह समस्या कॉपी करें (&C)"
+
+#: reportDialog.py:194
+msgid "&Edit in dictionary editor"
+msgstr "शब्दकोश संपादक में संपादित करें (&E)"
+
+#: dictionaryDisplayLiteCore.py:793
+msgid "&Enable entry"
+msgstr "प्रविष्टि सक्षम करें (&E)"
+
+#: reportDialog.py:64
+msgid "&Export CSV"
+msgstr "सीएसवी निर्यात करें (&E)"
+
+#: reportDialog.py:50
+msgid "&Issues"
+msgstr "समस्याएं (&I)"
+
+#: dictionaryDisplayLiteCore.py:904
 msgid "&Line number:"
 msgstr "पंक्ति संख्या (&L):"
 
-#: dictionaryDisplayLiteCore.py:681
+#: reportDialog.py:197
+msgid "&Open dictionary file"
+msgstr "शब्दकोश फ़ाइल खोलें (&O)"
+
+#: dictionaryDisplayLiteCore.py:888
 msgid "&Pattern:"
 msgstr "पैटर्न (&P):"
 
-#: dictionaryDisplayLiteCore.py:399
-#: dictionaryDisplayLiteCore.py:607
+#: dictionaryDisplayLiteCore.py:522
+#: dictionaryDisplayLiteCore.py:803
 msgid "&Remove"
 msgstr "हटाएं (&R)"
 
-#: dictionaryDisplayLiteCore.py:384
+#: dictionaryDisplayLiteCore.py:507
 msgid "&Search:"
 msgstr "खोजें (&S):"
 
-#: dictionaryDisplayLiteCore.py:671
+#: launcher.py:110
+msgid ". {count} hidden by your issue type filter"
+msgstr ". आपके समस्या प्रकार फ़िल्टर द्वारा {count} छिपाई गई"
+
+#: dictionaryDisplayLiteCore.py:872
 msgid "Add Dictionary Entry"
 msgstr "शब्दकोश प्रविष्टि जोड़ें"
 
-#: dictionaryDisplayLiteCore.py:87
+#: dictionaryDisplayLiteCore.py:102
 msgid "Anywhere"
 msgstr "कहीं भी"
 
-#: dictionaryDisplayLiteCore.py:686
+#: dictionaryDisplayLiteCore.py:893
 msgid "Case &sensitive"
 msgstr "अक्षर संवेदनशीलता (&s)"
 
-#: dictionaryDisplayLiteCore.py:948
+#: dictionaryDisplayLiteCore.py:1173
 msgid "Check dictionary error"
 msgstr "शब्दकोश त्रुटि जांचें"
 
-#: dictionaryDisplayLiteCore.py:1014
+#: dictionaryDisplayLiteCore.py:1241
 msgid "Checking dictionaries for errors, please wait"
 msgstr "शब्दकोशों में त्रुटियों की जाँच की जा रही है, कृपया प्रतीक्षा करें"
 
-#: dictionaryDisplayLiteCore.py:578
+#: launcher.py:68
+msgid "Checking dictionary"
+msgstr "शब्दकोश की जांच हो रही है"
+
+#: dictionaryDisplayLiteCore.py:766
 msgid "Clear the search box to reorder entries"
 msgstr "प्रविष्टियों को पुनर्वव्यवस्थित करने के लिए खोज बॉक्स साफ़ करें"
 
-#: dictionaryDisplayLiteCore.py:277
+#: reportDialog.py:65
+msgid "Close"
+msgstr "बंद करें"
+
+#: reportDialog.py:54
+msgid "Code"
+msgstr "कोड"
+
+#: dictionaryDisplayLiteCore.py:394
 msgid "Condense dictionary entries in the list (shorten spoken labels)"
 msgstr "सूची में शब्दकोश प्रविष्टियों को संक्षिप्त करें (बोले जाने वाले लेबल छोटे करें)"
 
-#: dictionaryDisplayLiteCore.py:1074
+#: dictionaryDisplayLiteCore.py:1301
 msgid "Could not open the dictionary error report"
 msgstr "शब्दकोश त्रुटि रिपोर्ट नहीं खोली जा सकी"
 
-#: dictionaryDisplayLiteCore.py:993
+#: dictionaryDisplayLiteCore.py:1220
 msgid "Could not open the dictionary file"
 msgstr "शब्दकोश फ़ाइल नहीं खोली जा सकी"
 
-#: dictionaryDisplayLiteCore.py:1010
+#: dictionaryDisplayLiteCore.py:1237
 msgid "Could not open the dictionary folder"
 msgstr "शब्दकोश फ़ोल्डर नहीं खोला जा सका"
 
-#: dictionaryDisplayLiteCore.py:1095
+#: dictionaryDisplayLiteCore.py:1409
+msgid "Could not read the dictionary file. Make sure it is saved as UTF-8"
+msgstr "शब्दकोश फ़ाइल पढ़ी नहीं जा सकी। सुनिश्चित करें कि यह UTF-8 के रूप में सहेजी गई है"
+
+#: dictionaryDisplayLiteCore.py:1322
 msgid "Could not read this dictionary file: {error}"
 msgstr "यह शब्दकोश फ़ाइल पढ़ी नहीं जा सकी: {error}"
 
-#: dictionaryDisplayLiteCore.py:66
+#: dictionaryDisplayLiteCore.py:81
 msgid "Could not save DictionaryDisplayLite settings."
 msgstr "DictionaryDisplayLite की सेटिंग सहेजी नहीं जा सकीं।"
 
-#: dictionaryDisplayLiteCore.py:598
+#: dictionaryDisplayLiteCore.py:786
 msgid "Could not save the voice dictionary file"
 msgstr "ध्वनि शब्दकोश फ़ाइल सहेजी नहीं जा सकी"
 
-#: dictionaryDisplayLiteCore.py:1063
+#: dictionaryDisplayLiteCore.py:1290
 msgid "Could not write the dictionary error report"
 msgstr "शब्दकोश त्रुटि रिपोर्ट लिखी नहीं जा सकी"
 
-#: dictionaryDisplayLiteCore.py:922
-#: dictionaryDisplayLiteCore.py:1032
+#: dictionaryDisplayLiteCore.py:1147
+#: dictionaryDisplayLiteCore.py:1259
 msgid "Default dictionary"
 msgstr "डिफ़ॉल्ट शब्दकोश"
 
-#: dictionaryDisplayLiteCore.py:389
+#: dictionaryDisplayLiteCore.py:512
 msgid "Dictionary &entries"
 msgstr "शब्दकोश प्रविष्टियाँ (&e)"
 
-#: dictionaryDisplayLiteCore.py:1050
+#: reportDialog.py:31
+#: reportDialog.py:137
+msgid "Dictionary Check: {count} issue(s)"
+msgstr "शब्दकोश जांच: {count} समस्या (समस्याएं)"
+
+#: dictionaryDisplayLiteCore.py:1277
 msgid "Dictionary check complete. No problems were found"
 msgstr "शब्दकोश जाँच पूर्ण हुई। कोई समस्या नहीं पाई गई"
 
-#: dictionaryDisplayLiteCore.py:1068
+#: dictionaryDisplayLiteCore.py:1295
 msgid "Dictionary check complete. Problems were found, opening the report"
 msgstr "शब्दकोश जाँच पूर्ण हुई। समस्याएँ पाई गईं, रिपोर्ट खोली जा रही है"
 
-#: dictionaryDisplayLiteCore.py:270
-#: dictionaryDisplayLiteCore.py:951
+#: launcher.py:91
+msgid "Dictionary check failed. See the NVDA log for details"
+msgstr "शब्दकोश जांच विफल। विवरण के लिए एनवीडिया लॉग देखें"
+
+#: launcher.py:103
+msgid "Dictionary check finished. {rules} rules checked: {critical} critical, {high} high, {medium} medium, {low} low"
+msgstr "शब्दकोश जांच समाप्त। {rules} नियमों की जांच की गई: {critical} गंभीर, {high} उच्च, {medium} मध्यम, {low} निम्न"
+
+#: launcher.py:59
+msgid "Dictionary check is already running"
+msgstr "शब्दकोश जांच पहले से चल रही है"
+
+#: dictionaryDisplayLiteCore.py:974
+msgid "DictionaryDisplayLite"
+msgstr "DictionaryDisplayLite"
+
+#: dictionaryDisplayLiteCore.py:387
+#: dictionaryDisplayLiteCore.py:1178
 msgid "DictionaryDisplayLite Settings"
 msgstr "DictionaryDisplayLite सेटिंग"
 
-#: dictionaryDisplayLiteCore.py:766
+#: dictionaryDisplayLiteCore.py:986
 msgid "DictionaryDisplayLite loaded in Watchdog mode"
 msgstr "DictionaryDisplayLite वॉचडॉग मोड में लोड हुआ"
 
-#: dictionaryDisplayLiteCore.py:397
+#: dictionaryDisplayLiteCore.py:796
+msgid "Disa&ble entry"
+msgstr "प्रविष्टि अक्षम करें (&B)"
+
+#: dictionaryDisplayLiteCore.py:520
 msgid "E&dit"
 msgstr "संपादित करें (&d)"
 
-#: dictionaryDisplayLiteCore.py:671
+#: dictionaryDisplayLiteCore.py:872
 msgid "Edit Dictionary Entry"
 msgstr "शब्दकोश प्रविष्टि संपादित करें"
 
-#: dictionaryDisplayLiteCore.py:1116
+#: dictionaryDisplayLiteCore.py:1343
 msgid "Empty pattern (line {lineNumber})"
 msgstr "खाली पैटर्न (पंक्ति {lineNumber})"
 
-#: dictionaryDisplayLiteCore.py:529
+#: dictionaryDisplayLiteCore.py:694
 msgid "Entry added"
 msgstr "प्रविष्टि जोड़ी गई"
 
-#: dictionaryDisplayLiteCore.py:573
+#: dictionaryDisplayLiteCore.py:761
+msgid "Entry disabled"
+msgstr "प्रविष्टि अक्षम कर दी गई"
+
+#: dictionaryDisplayLiteCore.py:758
+msgid "Entry enabled"
+msgstr "प्रविष्टि सक्षम कर दी गई"
+
+#: dictionaryDisplayLiteCore.py:738
 msgid "Entry removed"
 msgstr "प्रविष्टि हटाई गई"
 
-#: dictionaryDisplayLiteCore.py:560
+#: dictionaryDisplayLiteCore.py:725
 msgid "Entry updated"
 msgstr "प्रविष्टि अद्यतन की गई"
 
-#: dictionaryDisplayLiteCore.py:1146
+#: reportDialog.py:245
+msgid "Export CSV"
+msgstr "सीएसवी निर्यात करें"
+
+#: reportDialog.py:265
+msgid "Exported {count} issue(s) to {path}"
+msgstr "{count} समस्या (समस्याएं) {path} पर निर्यात की गईं"
+
+#: reportDialog.py:261
+msgid "Failed to export the CSV file"
+msgstr "CSV फ़ाइल निर्यात करने में विफल"
+
+#: reportDialog.py:229
+msgid "Failed to open the dictionary file"
+msgstr "शब्दकोश फ़ाइल खोलने में विफल"
+
+#: dictionaryDisplayLiteCore.py:1373
 msgid "Invalid regular expression \"{pattern}\" - {error} (line {lineNumber})"
 msgstr "अमान्य नियमित अभिव्यक्ति (Regular Expression) \"{pattern}\" - {error} (पंक्ति {lineNumber})"
 
-#: dictionaryDisplayLiteCore.py:746
+#: dictionaryDisplayLiteCore.py:953
 msgid "Invalid regular expression: {error}"
 msgstr "अमान्य नियमित अभिव्यक्ति: {error}"
 
-#: dictionaryDisplayLiteCore.py:733
+#: reportDialog.py:44
+msgid "Issue &types to show (uncheck a type to hide it)"
+msgstr "दिखाने के लिए समस्या के &प्रकार (छिपाने के लिए किसी प्रकार से चेक हटाएं)"
+
+#: reportDialog.py:209
+msgid "Issue copied to clipboard"
+msgstr "समस्या क्लिपबोर्ड पर कॉपी की गई"
+
+#: reportDialog.py:54
+msgid "Line"
+msgstr "लाइन"
+
+#: dictionaryDisplayLiteCore.py:940
 msgid "Line number must be 1 or greater"
 msgstr "पंक्ति संख्या 1 या अधिक होनी चाहिए"
 
-#: dictionaryDisplayLiteCore.py:729
+#: dictionaryDisplayLiteCore.py:936
 msgid "Line number must be a whole number"
 msgstr "पंक्ति संख्या एक पूर्ण संख्या होनी चाहिए"
 
-#: dictionaryDisplayLiteCore.py:1106
+#: dictionaryDisplayLiteCore.py:1333
 msgid "Malformed entry (expected 4 tab-separated fields, found {fieldCount}) (line {lineNumber})"
 msgstr "दोषपूर्ण प्रविष्टि (4 टैब-अलग किए गए फ़ील्ड अपेक्षित थे, {fieldCount} मिले) (पंक्ति {lineNumber})"
 
-#: dictionaryDisplayLiteCore.py:605
+#: reportDialog.py:54
+msgid "Message"
+msgstr "संदेश"
+
+#: dictionaryDisplayLiteCore.py:801
 msgid "Move &down"
 msgstr "नीचे ले जाएं (&d)"
 
-#: dictionaryDisplayLiteCore.py:603
+#: dictionaryDisplayLiteCore.py:799
 msgid "Move &up"
 msgstr "ऊपर ले जाएं (&u)"
 
-#: dictionaryDisplayLiteCore.py:535
-#: dictionaryDisplayLiteCore.py:566
+#: dictionaryDisplayLiteCore.py:700
+#: dictionaryDisplayLiteCore.py:731
+#: dictionaryDisplayLiteCore.py:744
 msgid "No dictionary entry is selected"
 msgstr "कोई शब्दकोश प्रविष्टि चयनित नहीं है"
 
-#: dictionaryDisplayLiteCore.py:1045
+#: dictionaryDisplayLiteCore.py:1272
 msgid "No dictionary file was found to check"
 msgstr "जांच के लिए कोई शब्दकोश फ़ाइल नहीं मिली"
 
-#: dictionaryDisplayLiteCore.py:1159
+#: dictionaryDisplayLiteCore.py:1386
 msgid "No voice dictionary is available to edit"
 msgstr "संपादन के लिए कोई ध्वनि शब्दकोश उपलब्ध नहीं है"
 
-#: dictionaryDisplayLiteCore.py:945
+#: dictionaryDisplayLiteCore.py:1170
 msgid "Open dictionary file"
 msgstr "शब्दकोश फ़ाइल खोलें"
 
-#: dictionaryDisplayLiteCore.py:946
+#: dictionaryDisplayLiteCore.py:1171
 msgid "Open dictionary folder"
 msgstr "शब्दकोश फ़ोल्डर खोलें"
 
-#: dictionaryDisplayLiteCore.py:894
-msgid "Press once to open the DictionaryDisplayLite quick menu, or twice to open Search and Edit Voice Dictionary directly"
-msgstr "DictionaryDisplayLite त्वरित मेनू खोलने के लिए एक बार दबाएं, या ध्वनि शब्दकोश खोजें और संपादित करें सीधे खोलने के लिए दो بار दबाएं"
+#: reportDialog.py:231
+msgid "Opened the dictionary file. Go to line {line}"
+msgstr "शब्दकोश फ़ाइल खोली गई। लाइन {line} पर जाएं"
 
-#: dictionaryDisplayLiteCore.py:863
+#: reportDialog.py:54
+msgid "Pattern"
+msgstr "पैटर्न"
+
+#: dictionaryDisplayLiteCore.py:1116
+msgid "Press once to open the DictionaryDisplayLite quick menu, twice to open Search and Edit Voice Dictionary directly, or three times to validate the speech dictionary of the current synthesizer"
+msgstr "DictionaryDisplayLite त्वरित मेनू खोलने के लिए एक बार दबाएं, सीधे खोज और संपादन वॉइस शब्दकोश खोलने के लिए दो बार, या वर्तमान सिंथेसाइज़र के स्पीच शब्दकोश को सत्यापित करने के लिए तीन बार दबाएं"
+
+#: dictionaryDisplayLiteCore.py:1085
 msgid "Press once to open the Voice dictionary, twice for the Default dictionary, or three times for the Temporary dictionary"
 msgstr "ध्वनि शब्दकोश खोलने के लिए एक बार, डिफ़ॉल्ट शब्दकोश के लिए दो बार, या अस्थायी शब्दकोश के लिए तीन बार दबाएं"
 
-#: dictionaryDisplayLiteCore.py:89
+#: dictionaryDisplayLiteCore.py:104
 msgid "Regular expression"
 msgstr "नियमित अभिव्यक्ति"
 
-#: dictionaryDisplayLiteCore.py:683
+#: dictionaryDisplayLiteCore.py:890
 msgid "Rep&lace:"
 msgstr "बदलें (&l):"
 
-#: dictionaryDisplayLiteCore.py:364
-#: dictionaryDisplayLiteCore.py:950
+#: reportDialog.py:236
+msgid "Report copied to clipboard"
+msgstr "रिपोर्ट क्लिपबोर्ड पर कॉपी की गई"
+
+#: dictionaryDisplayLiteCore.py:485
+#: dictionaryDisplayLiteCore.py:1177
 msgid "Search and Edit Voice Dictionary"
 msgstr "ध्वनि शब्दकोश खोजें और संपादित करें"
 
-#: dictionaryDisplayLiteCore.py:923
+#: dictionaryDisplayLiteCore.py:633
+msgid "Search not run: the regular expression is not valid"
+msgstr "खोज नहीं चलाई गई: रेगुलर एक्सप्रेसन् मान्य नहीं है"
+
+#: dictionaryDisplayLiteCore.py:629
+msgid "Search not run: the regular expression is too complex or too long"
+msgstr "खोज नहीं चलाई गई: रेगुलर एक्सप्रेसन् बहुत जटिल या बहुत लंबा है"
+
+#: dictionaryDisplayLiteCore.py:637
+msgid "Search stopped because it took too long. Results are incomplete"
+msgstr "खोज रोक दी गई क्योंकि इसमें बहुत अधिक समय लगा। परिणाम अधूरे हैं"
+
+#: launcher.py:44
+msgid "Select the speech dictionary file to check"
+msgstr "जाँचने के लिए स्पीच शब्दकोश फ़ाइल चुनें"
+
+#: reportDialog.py:54
+msgid "Severity"
+msgstr "गंभीरता"
+
+#: reportDialog.py:62
+msgid "Show &all types"
+msgstr "सभी प्रकार &दिखाएं"
+
+#: reportDialog.py:69
+msgid "Show &description of each issue"
+msgstr "प्रत्येक समस्या का &विवरण दिखाएं"
+
+#: reportDialog.py:54
+msgid "Suggestion"
+msgstr "सुझाव"
+
+#: dictionaryDisplayLiteCore.py:1148
 msgid "Temporary dictionary"
 msgstr "अस्थायी शब्दकोश"
 
-#: dictionaryDisplayLiteCore.py:723
+#: reportDialog.py:215
+msgid "The dictionary editor is not available"
+msgstr "शब्दकोश संपादक उपलब्ध नहीं है"
+
+#: dictionaryDisplayLiteCore.py:1398
+msgid "The dictionary file was not found"
+msgstr "शब्दकोश फ़ाइल नहीं मिली"
+
+#: dictionaryDisplayLiteCore.py:930
 msgid "The pattern cannot be empty"
 msgstr "पैटर्न खाली नहीं हो सकता"
 
-#: dictionaryDisplayLiteCore.py:692
+#: dictionaryDisplayLiteCore.py:749
+msgid "This entry cannot be enabled or disabled because its line is not in a valid format"
+msgstr "इस प्रविष्टि को सक्षम या अक्षम नहीं किया जा सकता क्योंकि इसकी पंक्ति मान्य प्रारूप में नहीं है"
+
+#: dictionaryDisplayLiteCore.py:899
 msgid "Type"
 msgstr "प्रकार"
 
-#: dictionaryDisplayLiteCore.py:1129
+#: dictionaryDisplayLiteCore.py:1356
 msgid "Unrecognized case-sensitivity flag (line {lineNumber})"
 msgstr "अपरिचित अक्षर संवेदनशीलता फ़्लैग (पंक्ति {lineNumber})"
 
-#: dictionaryDisplayLiteCore.py:1122
+#: dictionaryDisplayLiteCore.py:1349
 msgid "Unrecognized entry type \"{typeFlag}\" (line {lineNumber})"
 msgstr "अपरिचित प्रविष्टि प्रकार \"{typeFlag}\" (पंक्ति {lineNumber})"
 
-#: dictionaryDisplayLiteCore.py:378
+#: dictionaryDisplayLiteCore.py:501
 msgid "Use regular &expression for search"
 msgstr "खोज के लिए नियमित अभिव्यक्ति का उपयोग करें (&e)"
 
-#: dictionaryDisplayLiteCore.py:921
-#: dictionaryDisplayLiteCore.py:1031
+#: dictionaryDisplayLiteCore.py:1175
+msgid "Validate synthesizer dictionary"
+msgstr "सिंथेसाइज़र शब्दकोश को सत्यापित करें"
+
+#: dictionaryDisplayLiteCore.py:1146
+#: dictionaryDisplayLiteCore.py:1258
 msgid "Voice dictionary"
 msgstr "ध्वनि शब्दकोश"
 
-#: dictionaryDisplayLiteCore.py:88
+#: dictionaryDisplayLiteCore.py:103
 msgid "Whole word"
 msgstr "पूरा शब्द"
 
-#: dictionaryDisplayLiteCore.py:794
+#: reportDialog.py:105
+#: reportDialog.py:123
+msgid "checked"
+msgstr "चिह्नित"
+
+#: dictionaryDisplayLiteCore.py:1016
 msgid "default"
 msgstr "डिफ़ॉल्ट"
 
-#: dictionaryDisplayLiteCore.py:793
+#: dictionaryDisplayLiteCore.py:1015
 msgid "dictionary"
 msgstr "शब्दकोश"
 
-#: dictionaryDisplayLiteCore.py:796
+#: reportDialog.py:105
+#: reportDialog.py:123
+msgid "not checked"
+msgstr "चिह्नित नहीं"
+
+#: dictionaryDisplayLiteCore.py:1018
 msgid "temporary"
 msgstr "अस्थायी"
 
-#: dictionaryDisplayLiteCore.py:795
+#: dictionaryDisplayLiteCore.py:1017
 msgid "voice"
 msgstr "ध्वनि"
 
-#: dictionaryDisplayLiteCore.py:475
+#: reportDialog.py:146
+msgid "{count} issue(s) shown"
+msgstr "{count} समस्या (समस्याएँ) दिखाई गई"
+
+#: dictionaryDisplayLiteCore.py:640
 msgid "{count} results found"
 msgstr "{count} परिणाम मिले"
 
-#: dictionaryDisplayLiteCore.py:985
+#: dictionaryDisplayLiteCore.py:1212
 msgid "{label} has no file on disk yet"
 msgstr "{label} की डिस्क पर अभी कोई फ़ाइल नहीं है"
 
-#: dictionaryDisplayLiteCore.py:1002
+#: dictionaryDisplayLiteCore.py:1229
 msgid "{label} has no folder on disk yet"
 msgstr "{label} का डिस्क पर अभी कोई फ़ोल्डर नहीं है"
 
-#: dictionaryDisplayLiteCore.py:448
+#: dictionaryDisplayLiteCore.py:602
+msgid "{label}, disabled"
+msgstr "{label}, अक्षम"
+
+#: dictionaryDisplayLiteCore.py:596
 msgid "{pattern} → {replacement} (line {line})"
 msgstr "{pattern} → {replacement} (पंक्ति {line})"

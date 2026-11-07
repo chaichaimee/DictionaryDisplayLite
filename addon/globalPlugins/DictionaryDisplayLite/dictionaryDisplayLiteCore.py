@@ -4,6 +4,7 @@ import os
 import re
 import json
 import threading
+import time
 
 import wx
 import speech
@@ -21,10 +22,24 @@ import ui
 import speechDictHandler
 from scriptHandler import script
 
+from .validator import editorLink
+from .validator import launcher as dictionaryCheckLauncher
+
 addonHandler.initTranslation()
 
 # Multi-tap gap (milliseconds) for the ctrl+shift+D dictionary-open gesture.
 DICTIONARY_TAP_WINDOW_MS = 350
+
+# Safety limits for the user-typed regular expression in the editor search box.
+SEARCH_REGEX_MAX_LENGTH = 200
+SEARCH_REGEX_TIME_BUDGET_SECONDS = 0.25
+_NESTED_QUANTIFIER_RE = re.compile(r"\((?:[^()\\]|\\.)*(?:[+*]|\{\d*,\d*\})(?:[^()\\]|\\.)*\)\s*(?:[+*]|\{\d*,\d*\})")
+
+
+def _isRiskySearchPattern(pattern):
+	if len(pattern) > SEARCH_REGEX_MAX_LENGTH:
+		return True
+	return _NESTED_QUANTIFIER_RE.search(pattern) is not None
 
 CONFIG_SUBFOLDER = os.path.join("ChaiChaimee", "DictionaryDisplayLite")
 CONFIG_FILE_NAME = "settings.json"
@@ -95,53 +110,156 @@ def _getValidEntryTypeValuesAsStrings():
 	return {str(typeValue) for typeValue, _label in _getEntryTypeChoices()}
 
 
-def _writeVoiceDictionaryEntries(filePath, entries):
+class _DictionaryRow:
 	"""
-	Writes entries back to disk in the exact format
-	speechDictHandler.SpeechDict.load reads (confirmed via Zero-Trust source
-	verification across three independent mirrors): an optional
-	'#'-prefixed comment line immediately before an entry, then a
-	tab-separated pattern/replacement/caseSensitive/type line. Written
-	directly rather than through an NVDA save() method, since that method's
-	exact signature could not be confirmed during verification - mirroring
-	the confirmed read format precisely is the safer choice here.
+	One data row of a dictionary file, together with the comment and blank
+	lines written directly above it (leadingLines, kept verbatim so saving
+	never rearranges the file). rawLine is set for a row whose fields could not
+	be parsed; it is written back unchanged until the row is edited.
+	isEnabled is False for a row stored as a '#'-prefixed data line, which
+	NVDA reads as a comment and therefore never applies to speech.
+	"""
+
+	def __init__(
+		self,
+		pattern,
+		replacement,
+		comment="",
+		caseSensitive=False,
+		type=0,
+		leadingLines=None,
+		rawLine=None,
+		isEnabled=True,
+	):
+		self.pattern = pattern
+		self.replacement = replacement
+		self.comment = comment
+		self.caseSensitive = caseSensitive
+		self.type = type
+		self.leadingLines = leadingLines
+		self.rawLine = rawLine
+		self.isEnabled = isEnabled
+
+
+_LINE_BREAK_RE = re.compile(r"\r\n|\n|\r")
+
+
+def _rowFromLine(line, leadingLines):
+	comment = " ".join(text[1:] for text in leadingLines if text.startswith("#"))
+	fields = line.split("\t")
+	try:
+		if len(fields) != 4 or not fields[0]:
+			raise ValueError("unexpected field layout")
+		caseSensitive = bool(int(fields[2]))
+		entryType = int(fields[3])
+	except ValueError:
+		return _DictionaryRow(
+			fields[0], fields[1] if len(fields) > 1 else "", comment, False, 0, list(leadingLines), rawLine=line
+		)
+	return _DictionaryRow(fields[0], fields[1], comment, caseSensitive, entryType, list(leadingLines))
+
+
+def _disabledRowFromLine(line, leadingLines):
+	"""
+	Returns a disabled _DictionaryRow when a '#'-prefixed line holds a complete
+	entry (four tab-separated fields, a non-empty pattern that does not start
+	with whitespace, a 0/1 case flag and a known type), otherwise None so the
+	line stays an ordinary comment.
+	"""
+	fields = line[1:].split("\t")
+	if len(fields) != 4 or not fields[0] or fields[0][0].isspace():
+		return None
+	if fields[2] not in ("0", "1") or fields[3] not in _getValidEntryTypeValuesAsStrings():
+		return None
+	comment = " ".join(text[1:] for text in leadingLines if text.startswith("#"))
+	return _DictionaryRow(
+		fields[0], fields[1], comment, fields[2] == "1", int(fields[3]), list(leadingLines), isEnabled=False
+	)
+
+
+def _readDictionaryRows(filePath):
+	"""
+	Reads every row of the file, including rows that NVDA's own loader would
+	silently drop (for example an invalid regular expression), so that
+	re-saving the file from the editor never deletes them. Returns
+	(rows, trailingLines). Raises OSError or UnicodeDecodeError.
+	"""
+	with open(filePath, "r", encoding="utf-8-sig", newline="") as dictFile:
+		content = dictFile.read()
+	lines = _LINE_BREAK_RE.split(content)
+	if lines and lines[-1] == "":
+		lines.pop()
+	rows = []
+	pendingLines = []
+	for line in lines:
+		if line.startswith("#"):
+			disabledRow = _disabledRowFromLine(line, pendingLines)
+			if disabledRow is None:
+				pendingLines.append(line)
+				continue
+			rows.append(disabledRow)
+			pendingLines = []
+			continue
+		if not line.strip():
+			pendingLines.append(line)
+			continue
+		rows.append(_rowFromLine(line, pendingLines))
+		pendingLines = []
+	return rows, pendingLines
+
+
+def _writeVoiceDictionaryEntries(filePath, entries, trailingLines=()):
+	"""
+	Writes entries back in the tab-separated pattern/replacement/caseSensitive/
+	type format NVDA's speech dictionary loader reads, keeping each row's own
+	comment and blank lines. A disabled entry is written with a leading '#'.
+	The file is replaced atomically from a temporary
+	file so a failed write cannot leave a half-written dictionary behind.
 	"""
 	lines = []
 	for entry in entries:
-		if entry.comment:
-			lines.append(f"#{entry.comment}")
-		lines.append("\t".join([
+		leadingLines = entry.leadingLines
+		if leadingLines is None:
+			leadingLines = [f"#{entry.comment}"] if entry.comment else []
+		lines.extend(leadingLines)
+		if entry.rawLine is not None:
+			lines.append(entry.rawLine)
+			continue
+		dataLine = "\t".join([
 			entry.pattern,
 			entry.replacement,
 			"1" if entry.caseSensitive else "0",
 			str(entry.type),
-		]))
-	with open(filePath, "w", encoding="utf-8") as dictFile:
-		if lines:
-			dictFile.write("\n".join(lines) + "\n")
+		])
+		lines.append(dataLine if entry.isEnabled else "#" + dataLine)
+	lines.extend(trailingLines)
+	temporaryPath = filePath + ".tmp"
+	try:
+		with open(temporaryPath, "w", encoding="utf-8") as dictFile:
+			if lines:
+				dictFile.write("\n".join(lines) + "\n")
+		os.replace(temporaryPath, filePath)
+	except OSError:
+		try:
+			os.remove(temporaryPath)
+		except OSError:
+			pass
+		raise
 
 
 class QuickMenu(wx.Dialog):
 	"""
-	Floating drill-down list menu, modeled directly on xPlorer's
-	ContextMenuDialog (globalPlugins/xPlorer/contextMenu.py) at the
-	developer's explicit request, since that implementation is confirmed
-	working in production and the earlier wx.TreeCtrl-based attempt was not:
-	Enter never activated a leaf item at all (confirmed in dic_log.txt -
-	navigating between sibling items worked, but pressing Enter did nothing,
-	over and over, on every item including Settings).
-
-	Two things fix that, both taken from the xPlorer reference rather than
-	re-invented:
+	Floating drill-down list menu. An earlier wx.TreeCtrl-based version never
+	activated a leaf item on Enter (navigating between sibling items worked,
+	but pressing Enter did nothing on every item including Settings), so the
+	menu is built on a plain list box instead:
 	- Keys are intercepted via wx.EVT_CHAR_HOOK on the dialog itself, not
 	  wx.EVT_KEY_DOWN on a child control. EVT_CHAR_HOOK is delivered to the
 	  top-level window before a native child control gets a chance to
-	  swallow the key itself - the same event the countdownDialog.py house
-	  pattern already relies on for reliable key handling in a popup.
+	  swallow the key itself.
 	- A submenu is a genuine navigational drill-down: the same listbox's
 	  contents are replaced wholesale, with menu_stack tracking how to go
-	  back, rather than a wx.TreeCtrl expanding in place. This is also what
-	  "not just a simple announcement" was asking for.
+	  back, rather than a tree expanding in place.
 
 	This dialog is always entered via wx.CallAfter, never core.callLater -
 	see _showQuickMenu. That distinction is what makes ShowModal() safe to
@@ -261,8 +379,7 @@ class DictionaryDisplayLiteSettingsDialog(wx.Dialog):
 	cycle - and ShowModal() blocking from inside that cycle stalled
 	flushQueue itself, which the watchdog then reported as a frozen core.
 	wx.CallAfter instead posts to wx's own idle/pending-event queue and does
-	not nest inside that cycle, so ShowModal() is safe to call directly here,
-	matching the pattern xPlorer's own dialogs already use successfully.
+	not nest inside that cycle, so ShowModal() is safe to call directly here.
 	"""
 
 	def __init__(self, parent, currentSettings, onApply):
@@ -300,7 +417,7 @@ def _computeLineNumbers(entries):
 	"""
 	Returns the real 1-indexed physical line number each entry's data line
 	would occupy in the file, counting every physical line including an
-	optional '#'-prefixed comment line immediately before an entry - this
+	comment or blank line stored above an entry - this
 	matches _writeVoiceDictionaryEntries's own output exactly, so it stays
 	accurate for a freshly-loaded file and after any in-memory edit alike.
 	Pure function (Section 15 testability): no NVDA/wx calls.
@@ -308,11 +425,16 @@ def _computeLineNumbers(entries):
 	lineNumbers = []
 	currentLine = 1
 	for entry in entries:
-		if entry.comment:
-			currentLine += 1
+		currentLine += _leadingLineCount(entry)
 		lineNumbers.append(currentLine)
 		currentLine += 1
 	return lineNumbers
+
+
+def _leadingLineCount(entry):
+	if entry.leadingLines is not None:
+		return len(entry.leadingLines)
+	return 1 if entry.comment else 0
 
 
 class DictionaryEditorDialog(wx.Dialog):
@@ -348,9 +470,8 @@ class DictionaryEditorDialog(wx.Dialog):
 	require snapshotting and restoring the original file content, which is
 	a larger feature than what was specified.
 
-	Search-result announcement is debounced (modeled on REGEXPlusPlus's own
-	_scheduleSearch/_performSearch pattern: cancel-and-reschedule a
-	wx.CallLater on every keystroke) so typing doesn't trigger a spoken
+	Search-result announcement is debounced (the pending timer is cancelled
+	and rescheduled on every keystroke) so typing doesn't trigger a spoken
 	count on every character - only once typing pauses. The list itself
 	still filters immediately on every keystroke; only the spoken
 	announcement is delayed, since a live-updating list with a delayed
@@ -359,7 +480,7 @@ class DictionaryEditorDialog(wx.Dialog):
 
 	SEARCH_ANNOUNCE_DELAY_MS = 700
 
-	def __init__(self, parent, filePath):
+	def __init__(self, parent, filePath, initialLine=0):
 		# Translators: Title of the voice dictionary search-and-edit dialog.
 		super().__init__(parent, title=_("Search and Edit Voice Dictionary"))
 		self._filePath = filePath
@@ -368,6 +489,8 @@ class DictionaryEditorDialog(wx.Dialog):
 		self._isDirty = False
 		self._typeChoices = _getEntryTypeChoices()
 		self._searchAnnounceTimer = None
+		self._searchProblem = None
+		self._trailingLines = []
 
 		self._loadEntries()
 
@@ -413,42 +536,71 @@ class DictionaryEditorDialog(wx.Dialog):
 		self.Bind(wx.EVT_CLOSE, self._onCloseEvent)
 
 		self._refreshList(announce=False)
+		if initialLine:
+			self._selectEntryByLine(initialLine)
 		# Focus lands on the entry list itself, not the search box, per spec.
 		wx.CallAfter(self._entryListBox.SetFocus)
 
 	def _loadEntries(self):
-		freshDict = speechDictHandler.SpeechDict()
-		freshDict.load(self._filePath)
-		self._entries = list(freshDict)
+		self._entries, self._trailingLines = _readDictionaryRows(self._filePath)
+
+	@property
+	def isDirty(self):
+		return self._isDirty
+
+	def _selectEntryByLine(self, lineNumber):
+		lineNumbers = _computeLineNumbers(self._entries)
+		targetIndex = None
+		for index, entryLine in enumerate(lineNumbers):
+			if entryLine > lineNumber:
+				break
+			targetIndex = index
+		if targetIndex is None:
+			return
+		self._selectEntryByIndex(targetIndex)
 
 	def _refreshList(self, announce=True):
 		searchText = self._searchEdit.GetValue()
 		useRegex = self._useRegexSearchCheckbox.GetValue()
 		compiledSearch = None
+		self._searchProblem = None
 		if useRegex and searchText:
-			try:
-				compiledSearch = re.compile(searchText, re.IGNORECASE)
-			except re.error:
-				compiledSearch = None
+			if _isRiskySearchPattern(searchText):
+				self._searchProblem = "unsafe"
+			else:
+				try:
+					compiledSearch = re.compile(searchText, re.IGNORECASE)
+				except re.error:
+					self._searchProblem = "invalid"
 
 		lineNumbers = _computeLineNumbers(self._entries)
 		self._visibleIndices = []
 		displayLabels = []
+		searchStartTime = time.perf_counter()
 		for index, entry in enumerate(self._entries):
 			haystack = f"{entry.pattern} {entry.replacement}"
 			if searchText:
 				if useRegex:
-					if compiledSearch is None or not compiledSearch.search(haystack):
+					if compiledSearch is None:
+						break
+					if time.perf_counter() - searchStartTime > SEARCH_REGEX_TIME_BUDGET_SECONDS:
+						self._searchProblem = "timeout"
+						break
+					if not compiledSearch.search(haystack):
 						continue
 				elif searchText.lower() not in haystack.lower():
 					continue
 			self._visibleIndices.append(index)
-			displayLabels.append(
+			entryLabel = (
 				# Translators: {pattern}/{replacement} are the entry's own text; {line} is its line number in the .dic file.
 				_("{pattern} \u2192 {replacement} (line {line})").format(
 					pattern=entry.pattern, replacement=entry.replacement, line=lineNumbers[index]
 				)
 			)
+			if not entry.isEnabled:
+				# Translators: {label} is a dictionary entry's list text; appended for an entry that is turned off.
+				entryLabel = _("{label}, disabled").format(label=entryLabel)
+			displayLabels.append(entryLabel)
 
 		self._entryListBox.Set(displayLabels)
 		if displayLabels:
@@ -471,6 +623,19 @@ class DictionaryEditorDialog(wx.Dialog):
 		self._searchAnnounceTimer = None
 		resultCount = len(self._visibleIndices)
 		speech.cancelSpeech()
+		searchProblem = self._searchProblem
+		if searchProblem == "unsafe":
+			# Translators: Reported when the regular expression typed in the search box is too complex or too long to run safely.
+			ui.message(_("Search not run: the regular expression is too complex or too long"))
+			return
+		if searchProblem == "invalid":
+			# Translators: Reported when the regular expression typed in the search box is not valid.
+			ui.message(_("Search not run: the regular expression is not valid"))
+			return
+		if searchProblem == "timeout":
+			# Translators: Reported when a regular expression search was stopped because it took too long.
+			ui.message(_("Search stopped because it took too long. Results are incomplete"))
+			return
 		# Translators: {count} is the number of dictionary entries matching the current search.
 		ui.message(_("{count} results found").format(count=resultCount))
 
@@ -572,6 +737,29 @@ class DictionaryEditorDialog(wx.Dialog):
 		# Translators: Reported after an entry is removed.
 		ui.message(_("Entry removed"))
 
+	def _onToggleEnabled(self, evt):
+		entryIndex = self._getSelectedEntryIndex()
+		if entryIndex is None:
+			# Translators: Reported when Enable or Disable is chosen with nothing selected.
+			ui.message(_("No dictionary entry is selected"))
+			return
+		entry = self._entries[entryIndex]
+		if entry.rawLine is not None:
+			# Translators: Reported when an entry cannot be turned on or off because its line is malformed.
+			ui.message(_("This entry cannot be enabled or disabled because its line is not in a valid format"))
+			return
+		entry.isEnabled = not entry.isEnabled
+		self._isDirty = True
+		self._writeEntriesToDisk()
+		self._refreshList(announce=False)
+		self._selectEntryByIndex(entryIndex)
+		if entry.isEnabled:
+			# Translators: Reported after an entry is turned on.
+			ui.message(_("Entry enabled"))
+			return
+		# Translators: Reported after an entry is turned off.
+		ui.message(_("Entry disabled"))
+
 	def _onMove(self, delta):
 		if self._searchEdit.GetValue():
 			# Translators: Reported when trying to reorder entries while a search filter is active.
@@ -591,7 +779,7 @@ class DictionaryEditorDialog(wx.Dialog):
 
 	def _writeEntriesToDisk(self):
 		try:
-			_writeVoiceDictionaryEntries(self._filePath, self._entries)
+			_writeVoiceDictionaryEntries(self._filePath, self._entries, self._trailingLines)
 		except OSError as writeError:
 			logHandler.log.debug(f"DictionaryDisplayLite: Failed to write voice dictionary - {writeError}")
 			# Translators: Reported when the voice dictionary file could not be saved.
@@ -599,6 +787,14 @@ class DictionaryEditorDialog(wx.Dialog):
 
 	def _onListContextMenu(self, evt):
 		menu = wx.Menu()
+		selectedIndex = self._getSelectedEntryIndex()
+		if selectedIndex is not None and not self._entries[selectedIndex].isEnabled:
+			# Translators: Context menu item to turn a disabled entry back on.
+			toggleItem = menu.Append(wx.ID_ANY, _("&Enable entry"))
+		else:
+			# Translators: Context menu item to stop an entry from being applied without deleting it.
+			toggleItem = menu.Append(wx.ID_ANY, _("Disa&ble entry"))
+		self.Bind(wx.EVT_MENU, self._onToggleEnabled, toggleItem)
 		# Translators: Context menu item to move the selected entry earlier in the dictionary.
 		moveUpItem = menu.Append(wx.ID_ANY, _("Move &up"))
 		# Translators: Context menu item to move the selected entry later in the dictionary.
@@ -616,6 +812,11 @@ class DictionaryEditorDialog(wx.Dialog):
 			return
 		liveDict = speechDictHandler.dictionaries.get("voice")
 		if liveDict is None:
+			return
+		liveFileName = getattr(liveDict, "fileName", None)
+		if not liveFileName or (
+			os.path.normcase(os.path.abspath(liveFileName)) != os.path.normcase(os.path.abspath(self._filePath))
+		):
 			return
 		try:
 			liveDict.load(self._filePath)
@@ -672,6 +873,12 @@ class DictionaryEntryEditDialog(wx.Dialog):
 		super().__init__(parent, title=title)
 		self._typeChoices = typeChoices
 		self._originalComment = existingEntry.comment if (existingEntry is not None) else ""
+		self._originalEnabled = existingEntry.isEnabled if (existingEntry is not None) else True
+		self._originalLeadingLines = (
+			list(existingEntry.leadingLines)
+			if (existingEntry is not None and existingEntry.leadingLines is not None)
+			else None
+		)
 		self.resultEntry = None
 		self.resultLineNumber = None
 
@@ -738,7 +945,7 @@ class DictionaryEntryEditDialog(wx.Dialog):
 		typeIndex = self._typeRadioBox.GetSelection()
 		entryType = self._typeChoices[typeIndex][0] if typeIndex != wx.NOT_FOUND else self._typeChoices[0][0]
 		try:
-			newEntry = speechDictHandler.SpeechDictEntry(
+			speechDictHandler.SpeechDictEntry(
 				pattern, replacement, self._originalComment, caseSensitive=caseSensitive, type=entryType
 			)
 		except re.error as regexError:
@@ -746,7 +953,15 @@ class DictionaryEntryEditDialog(wx.Dialog):
 			ui.message(_("Invalid regular expression: {error}").format(error=regexError))
 			return
 
-		self.resultEntry = newEntry
+		self.resultEntry = _DictionaryRow(
+			pattern,
+			replacement,
+			self._originalComment,
+			caseSensitive,
+			entryType,
+			self._originalLeadingLines,
+			isEnabled=self._originalEnabled,
+		)
 		self.resultLineNumber = lineNumber
 		# Skip lets the stock OK button's default handling run too, which is
 		# what actually calls EndModal(wx.ID_OK) for a CreateButtonSizer button.
@@ -754,6 +969,9 @@ class DictionaryEntryEditDialog(wx.Dialog):
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+
+	# Translators: Category name shown for this add-on's commands in the Input Gestures dialog.
+	scriptCategory = _("DictionaryDisplayLite")
 
 	def __init__(self):
 		super(GlobalPlugin, self).__init__()
@@ -763,6 +981,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self._quickMenuTapCount = 0
 		self._quickMenuTapTimer = None
 		self._settings = loadSettings()
+		dictionaryCheckLauncher.resume()
+		editorLink.setOpener(self._showEditorForFile)
 		logHandler.log.info(_("DictionaryDisplayLite loaded in Watchdog mode"))
 
 	def terminate(self):
@@ -770,6 +990,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		Safely release resources and reset state to prevent zombie states.
 		"""
 		self._isDictionaryDialogActive = False
+		dictionaryCheckLauncher.shutdown()
+		editorLink.clearOpener()
 		if self._dictionaryTapTimer is not None:
 			self._dictionaryTapTimer.Stop()
 			self._dictionaryTapTimer = None
@@ -888,13 +1110,14 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		else:
 			gui.mainFrame.onTemporaryDictionaryCommand(None)
 
-	# --- shift+windows+D: quick menu (single tap) / dictionary editor (double tap) ---
+	# --- shift+windows+D: quick menu (1 tap) / dictionary editor (2 taps) / validation (3 taps) ---
 
 	@script(
 		description=_(
 			# Translators: Input help mode message for the DictionaryDisplayLite quick menu gesture.
-			"Press once to open the DictionaryDisplayLite quick menu, or twice to "
-			"open Search and Edit Voice Dictionary directly"
+			"Press once to open the DictionaryDisplayLite quick menu, twice to "
+			"open Search and Edit Voice Dictionary directly, or three times to "
+			"validate the speech dictionary of the current synthesizer"
 		),
 		gesture="kb:shift+windows+d",
 	)
@@ -911,7 +1134,9 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		tapCount = self._quickMenuTapCount
 		self._quickMenuTapCount = 0
 		self._quickMenuTapTimer = None
-		if tapCount >= 2:
+		if tapCount >= 3:
+			wx.CallAfter(dictionaryCheckLauncher.startValidation)
+		elif tapCount == 2:
 			wx.CallAfter(self._openDictionaryEditor)
 		else:
 			wx.CallAfter(self._showQuickMenu, self._buildQuickMenuData())
@@ -940,12 +1165,14 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			}
 			for dictType, displayLabel in dictionaryLabels
 		]
-		# Order per request: file, folder, check error, editor, settings last.
+		# Order per request: file, folder, check error, validate, editor, settings last.
 		return [
 			{"label": _("Open dictionary file"), "submenu": fileSubmenu},
 			{"label": _("Open dictionary folder"), "submenu": folderSubmenu},
 			# Translators: Item in the DictionaryDisplayLite quick menu.
 			{"label": _("Check dictionary error"), "action": self._checkDictionaryErrors},
+			# Translators: Item in the DictionaryDisplayLite quick menu that validates the speech dictionary of the current synthesizer.
+			{"label": _("Validate synthesizer dictionary"), "action": dictionaryCheckLauncher.startValidation},
 			# Translators: Item in the DictionaryDisplayLite quick menu.
 			{"label": _("Search and Edit Voice Dictionary"), "action": self._openDictionaryEditor},
 			{"label": _("DictionaryDisplayLite Settings"), "action": self._openSettingsDialog},
@@ -1158,12 +1385,32 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			# Translators: Reported when there is no voice dictionary to edit.
 			ui.message(_("No voice dictionary is available to edit"))
 			return
+		self._showEditorForFile(filePath, 0)
+
+	def _showEditorForFile(self, filePath, initialLine=0):
+		"""
+		Opens the editor on filePath, selecting the entry at initialLine when
+		given. Returns True when the file was changed. Must run on the main
+		thread, reached through wx.CallAfter.
+		"""
+		if not filePath or not os.path.isfile(filePath):
+			# Translators: Reported when the dictionary file to edit does not exist.
+			ui.message(_("The dictionary file was not found"))
+			return False
 		gui.mainFrame.prePopup()
-		editorDialog = DictionaryEditorDialog(gui.mainFrame, filePath)
+		editorDialog = None
 		try:
+			editorDialog = DictionaryEditorDialog(gui.mainFrame, filePath, initialLine)
 			editorDialog.ShowModal()
+			return editorDialog.isDirty
+		except (OSError, UnicodeDecodeError) as loadError:
+			logHandler.log.debug(f"DictionaryDisplayLite: Could not open dictionary in editor - {loadError}")
+			# Translators: Reported when the dictionary file could not be read for editing.
+			ui.message(_("Could not read the dictionary file. Make sure it is saved as UTF-8"))
+			return False
 		finally:
-			editorDialog.Destroy()
+			if editorDialog is not None:
+				editorDialog.Destroy()
 			gui.mainFrame.postPopup()
 
 	def _openSettingsDialog(self):

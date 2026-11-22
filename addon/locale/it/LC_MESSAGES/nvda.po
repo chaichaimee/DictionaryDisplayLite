@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: DictionaryDisplayLite 2026.11.0\n"
+"Project-Id-Version: DictionaryDisplayLite 2026.12.0\n"
 "Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
-"POT-Creation-Date: 2026-11-07 17:14+0700\n"
+"POT-Creation-Date: 2026-11-22 15:26+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Italian\n"
@@ -12,76 +12,137 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: ChaiBot Addon\n"
 
-#: dictionaryDisplayLiteCore.py:518
+#: dictionaryDisplayLiteCore.py:581
 msgid "&Add"
 msgstr "&Aggiungi"
 
-#: reportDialog.py:63
+#: entryTraceDialog.py:46
+msgid "&Check"
+msgstr "&Verificar"
+
+#: reportDialog.py:66
 msgid "&Copy Report"
 msgstr "&Kopirajte izvješće"
 
-#: reportDialog.py:199
+#: entryTraceDialog.py:229
+msgid "&Copy dictionary line"
+msgstr "&Copiar línea del diccionario"
+
+#: reportDialog.py:224
 msgid "&Copy this issue"
 msgstr "&Kopirajte ovaj problem"
 
-#: reportDialog.py:194
+#: entryTraceDialog.py:68
+msgid "&Details of the selected entry"
+msgstr "&Detalles de la entrada seleccionada"
+
+#: entryTraceDialog.py:79
+msgid "&Edit entry"
+msgstr "&Editar entrada"
+
+#: entryTraceDialog.py:226
+#: reportDialog.py:219
 msgid "&Edit in dictionary editor"
 msgstr "&Uredi u uređivaču rječnika"
 
-#: dictionaryDisplayLiteCore.py:793
+#: dictionaryDisplayLiteCore.py:919
 msgid "&Enable entry"
 msgstr "&Omogući unos"
 
-#: reportDialog.py:64
+#: entryTraceDialog.py:58
+msgid "&Entries that change this text, in the order NVDA applies them"
+msgstr "Entradas que modifican este texto, en el orden en que NVDA las aplica"
+
+#: reportDialog.py:67
 msgid "&Export CSV"
 msgstr "Izvezi &CSV"
 
-#: reportDialog.py:50
+#: reportDialog.py:65
+msgid "&Hide all types"
+msgstr "&Ocultar todos los tipos"
+
+#: reportDialog.py:51
 msgid "&Issues"
 msgstr "&Problemi"
 
-#: dictionaryDisplayLiteCore.py:904
+#: dictionaryDisplayLiteCore.py:1039
 msgid "&Line number:"
 msgstr "Numero di &riga:"
 
-#: reportDialog.py:197
+#: reportDialog.py:222
 msgid "&Open dictionary file"
 msgstr "&Otvori datoteku rječnika"
 
-#: dictionaryDisplayLiteCore.py:888
+#: dictionaryDisplayLiteCore.py:1023
 msgid "&Pattern:"
 msgstr "&Modello:"
 
-#: dictionaryDisplayLiteCore.py:522
-#: dictionaryDisplayLiteCore.py:803
+#: dictionaryDisplayLiteCore.py:585
+#: dictionaryDisplayLiteCore.py:938
 msgid "&Remove"
 msgstr "&Rimuovi"
 
-#: dictionaryDisplayLiteCore.py:507
+#: dictionaryDisplayLiteCore.py:570
 msgid "&Search:"
 msgstr "C&erca:"
+
+#: entryTraceDialog.py:49
+msgid "&Show only entries containing this word (optional)"
+msgstr "&Mostrar solo las entradas que contengan esta palabra (opcional)"
+
+#: entryTraceDialog.py:41
+msgid "&Text to check"
+msgstr "Te&xto a verificar"
+
+#: entryTrace.py:270
+msgid "(empty)"
+msgstr "(vacío)"
 
 #: launcher.py:110
 msgid ". {count} hidden by your issue type filter"
 msgstr ". {count} skrivenih filterom vrste problema"
 
-#: dictionaryDisplayLiteCore.py:872
+#: dictionaryDisplayLiteCore.py:1007
 msgid "Add Dictionary Entry"
 msgstr "Aggiungi voce al dizionario"
 
-#: dictionaryDisplayLiteCore.py:102
+#: dictionaryDisplayLiteCore.py:887
+msgid "All entries disabled"
+msgstr "Todas las entradas deshabilitadas"
+
+#: dictionaryDisplayLiteCore.py:876
+msgid "All entries enabled"
+msgstr "Todas las entradas habilitadas"
+
+#: dictionaryDisplayLiteCore.py:129
 msgid "Anywhere"
 msgstr "Ovunque"
 
-#: dictionaryDisplayLiteCore.py:893
+#: entryTraceDialog.py:61
+msgid "Becomes"
+msgstr "Se convierte en"
+
+#: entryTrace.py:284
+msgid "Becomes: {result}"
+msgstr "Se convierte en: {result}"
+
+#: entryTrace.py:121
+msgid "Built-in dictionary"
+msgstr "Diccionario integrado"
+
+#: dictionaryDisplayLiteCore.py:1028
 msgid "Case &sensitive"
 msgstr "Maiuscole/&minuscole"
 
-#: dictionaryDisplayLiteCore.py:1173
+#: entryTrace.py:282
+msgid "Case sensitive: {value}"
+msgstr "Distinguir mayúsculas y minúsculas: {value}"
+
+#: dictionaryDisplayLiteCore.py:1310
 msgid "Check dictionary error"
 msgstr "Verifica errori del dizionario"
 
-#: dictionaryDisplayLiteCore.py:1241
+#: dictionaryDisplayLiteCore.py:1380
 msgid "Checking dictionaries for errors, please wait"
 msgstr "Verifica errori nei dizionari in corso, attendere prego"
 
@@ -89,73 +150,83 @@ msgstr "Verifica errori nei dizionari in corso, attendere prego"
 msgid "Checking dictionary"
 msgstr "Provjera rječnika"
 
-#: dictionaryDisplayLiteCore.py:766
+#: dictionaryDisplayLiteCore.py:892
 msgid "Clear the search box to reorder entries"
 msgstr "Cancella la casella di ricerca per riordinare le voci"
 
-#: reportDialog.py:65
+#: entryTraceDialog.py:81
+#: reportDialog.py:68
 msgid "Close"
 msgstr "Chiudi"
 
-#: reportDialog.py:54
+#: reportDialog.py:55
 msgid "Code"
 msgstr "Codice"
 
-#: dictionaryDisplayLiteCore.py:394
+#: dictionaryDisplayLiteCore.py:421
 msgid "Condense dictionary entries in the list (shorten spoken labels)"
 msgstr "Condensa le voci del dizionario nell'elenco (accorcia le etichette vocali)"
 
-#: dictionaryDisplayLiteCore.py:1301
+#: entryTraceDialog.py:80
+msgid "Copy &report"
+msgstr "Copiar &informe"
+
+#: dictionaryDisplayLiteCore.py:1440
 msgid "Could not open the dictionary error report"
 msgstr "Impossibile aprire il rapporto errori del dizionario"
 
-#: dictionaryDisplayLiteCore.py:1220
+#: dictionaryDisplayLiteCore.py:1359
 msgid "Could not open the dictionary file"
 msgstr "Impossibile aprire il file del dizionario"
 
-#: dictionaryDisplayLiteCore.py:1237
+#: dictionaryDisplayLiteCore.py:1376
 msgid "Could not open the dictionary folder"
 msgstr "Impossibile aprire la cartella del dizionario"
 
-#: dictionaryDisplayLiteCore.py:1409
+#: dictionaryDisplayLiteCore.py:1548
 msgid "Could not read the dictionary file. Make sure it is saved as UTF-8"
 msgstr "Nije moguće pročitati datoteku rječnika. Provjerite je li spremljena kao UTF-8"
 
-#: dictionaryDisplayLiteCore.py:1322
+#: dictionaryDisplayLiteCore.py:1461
 msgid "Could not read this dictionary file: {error}"
 msgstr "Impossibile leggere questo file di dizionario: {error}"
 
-#: dictionaryDisplayLiteCore.py:81
+#: dictionaryDisplayLiteCore.py:86
 msgid "Could not save DictionaryDisplayLite settings."
 msgstr "Impossibile salvare le impostazioni di DictionaryDisplayLite."
 
-#: dictionaryDisplayLiteCore.py:786
+#: dictionaryDisplayLiteCore.py:912
 msgid "Could not save the voice dictionary file"
 msgstr "Impossibile salvare il file del dizionario vocale"
 
-#: dictionaryDisplayLiteCore.py:1290
+#: dictionaryDisplayLiteCore.py:1429
 msgid "Could not write the dictionary error report"
 msgstr "Impossibile scrivere il rapporto errori del dizionario"
 
-#: dictionaryDisplayLiteCore.py:1147
-#: dictionaryDisplayLiteCore.py:1259
+#: dictionaryDisplayLiteCore.py:1284
+#: dictionaryDisplayLiteCore.py:1398
+#: entryTrace.py:120
 msgid "Default dictionary"
 msgstr "Dizionario predefinito"
 
-#: dictionaryDisplayLiteCore.py:512
+#: entryTraceDialog.py:61
+msgid "Dictionary"
+msgstr "Diccionario"
+
+#: dictionaryDisplayLiteCore.py:575
 msgid "Dictionary &entries"
 msgstr "&Voci del dizionario"
 
 #: reportDialog.py:31
-#: reportDialog.py:137
+#: reportDialog.py:150
 msgid "Dictionary Check: {count} issue(s)"
 msgstr "Provjera rječnika: {count} problem(a)"
 
-#: dictionaryDisplayLiteCore.py:1277
+#: dictionaryDisplayLiteCore.py:1416
 msgid "Dictionary check complete. No problems were found"
 msgstr "Controllo del dizionario completato. Non sono stati trovati problemi"
 
-#: dictionaryDisplayLiteCore.py:1295
+#: dictionaryDisplayLiteCore.py:1434
 msgid "Dictionary check complete. Problems were found, opening the report"
 msgstr "Controllo del dizionario completato. Sono stati trovati problemi, apertura del rapporto"
 
@@ -171,179 +242,258 @@ msgstr "Provjera rječnika je završena. Provjereno pravila: {rules}, kritičnih
 msgid "Dictionary check is already running"
 msgstr "Provjera rječnika već je pokrenuta"
 
-#: dictionaryDisplayLiteCore.py:974
+#: entryTraceDialog.py:135
+msgid "Dictionary entries for the text: {count} found"
+msgstr "Entradas de diccionario para el texto: {count} encontradas"
+
+#: entryTraceDialog.py:238
+msgid "Dictionary line copied to clipboard"
+msgstr "Línea de diccionario copiada al portapapeles"
+
+#: entryTrace.py:275
+msgid "Dictionary: {name}"
+msgstr "Diccionario: {name}"
+
+#: dictionaryDisplayLiteCore.py:1109
 msgid "DictionaryDisplayLite"
 msgstr "DictionaryDisplayLite"
 
-#: dictionaryDisplayLiteCore.py:387
-#: dictionaryDisplayLiteCore.py:1178
+#: dictionaryDisplayLiteCore.py:414
+#: dictionaryDisplayLiteCore.py:1320
 msgid "DictionaryDisplayLite Settings"
 msgstr "Impostazioni di DictionaryDisplayLite"
 
-#: dictionaryDisplayLiteCore.py:986
+#: dictionaryDisplayLiteCore.py:1121
 msgid "DictionaryDisplayLite loaded in Watchdog mode"
 msgstr "DictionaryDisplayLite caricato in modalità Watchdog"
 
-#: dictionaryDisplayLiteCore.py:796
+#: dictionaryDisplayLiteCore.py:922
 msgid "Disa&ble entry"
 msgstr "Onemo&gući unos"
 
-#: dictionaryDisplayLiteCore.py:520
+#: dictionaryDisplayLiteCore.py:930
+msgid "Disable &all"
+msgstr "&Kaikki pois käytöstä"
+
+#: dictionaryDisplayLiteCore.py:583
 msgid "E&dit"
 msgstr "&Modifica"
 
-#: dictionaryDisplayLiteCore.py:872
+#: dictionaryDisplayLiteCore.py:1007
 msgid "Edit Dictionary Entry"
 msgstr "Modifica voce del dizionario"
 
-#: dictionaryDisplayLiteCore.py:1343
+#: dictionaryDisplayLiteCore.py:1482
 msgid "Empty pattern (line {lineNumber})"
 msgstr "Modello vuoto (riga {lineNumber})"
 
-#: dictionaryDisplayLiteCore.py:694
+#: dictionaryDisplayLiteCore.py:927
+msgid "Enable &all"
+msgstr "&Kaikki käyttöön"
+
+#: dictionaryDisplayLiteCore.py:772
 msgid "Entry added"
 msgstr "Voce aggiunta"
 
-#: dictionaryDisplayLiteCore.py:761
+#: dictionaryDisplayLiteCore.py:839
 msgid "Entry disabled"
 msgstr "Unos je onemogućen"
 
-#: dictionaryDisplayLiteCore.py:758
+#: dictionaryDisplayLiteCore.py:836
 msgid "Entry enabled"
 msgstr "Unos je omogućen"
 
-#: dictionaryDisplayLiteCore.py:738
+#: dictionaryDisplayLiteCore.py:816
 msgid "Entry removed"
 msgstr "Voce rimossa"
 
-#: dictionaryDisplayLiteCore.py:725
+#: dictionaryDisplayLiteCore.py:803
 msgid "Entry updated"
 msgstr "Voce aggiornata"
 
-#: reportDialog.py:245
+#: entryTrace.py:300
+msgid "Entry {number}"
+msgstr "Merkintä {number}"
+
+#: reportDialog.py:270
 msgid "Export CSV"
 msgstr "Izvezi CSV"
 
-#: reportDialog.py:265
+#: reportDialog.py:290
 msgid "Exported {count} issue(s) to {path}"
 msgstr "Izvezeno je {count} problem(a) u {path}"
 
-#: reportDialog.py:261
+#: reportDialog.py:286
 msgid "Failed to export the CSV file"
 msgstr "CSV dosyasını dışa aktarma başarısız oldu"
 
-#: reportDialog.py:229
+#: reportDialog.py:254
 msgid "Failed to open the dictionary file"
 msgstr "Sözlük dosyası açılamadı"
 
-#: dictionaryDisplayLiteCore.py:1373
+#: dictionaryDisplayLiteCore.py:1313
+msgid "Find dictionary entries for selected text"
+msgstr "Etsi sanakirjamerkintöjä valitulle tekstille"
+
+#: entryTraceDialog.py:30
+msgid "Find dictionary entries for the selected text"
+msgstr "Etsi sanakirjamerkintöjä valitulle tekstille"
+
+#: dictionaryDisplayLiteCore.py:1512
 msgid "Invalid regular expression \"{pattern}\" - {error} (line {lineNumber})"
 msgstr "Espressione regolare non valida \"{pattern}\" - {error} (riga {lineNumber})"
 
-#: dictionaryDisplayLiteCore.py:953
+#: dictionaryDisplayLiteCore.py:1088
 msgid "Invalid regular expression: {error}"
 msgstr "Espressione regolare non valida: {error}"
 
-#: reportDialog.py:44
+#: reportDialog.py:45
 msgid "Issue &types to show (uncheck a type to hide it)"
 msgstr "Gösterilecek sorun tipleri (gizlemek için bir tipi işaretsiz bırakın)"
 
-#: reportDialog.py:209
+#: reportDialog.py:234
 msgid "Issue copied to clipboard"
 msgstr "Sorun panoya kopyalandı"
 
-#: reportDialog.py:54
+#: entryTraceDialog.py:61
+#: reportDialog.py:55
 msgid "Line"
 msgstr "Satır"
 
-#: dictionaryDisplayLiteCore.py:940
+#: entryTrace.py:175
+msgid "Line does not have 4 tab-separated fields"
+msgstr "Rivillä ei ole neljää sarkainerotettua kenttää"
+
+#: dictionaryDisplayLiteCore.py:1075
 msgid "Line number must be 1 or greater"
 msgstr "Il numero di riga deve essere 1 o superiore"
 
-#: dictionaryDisplayLiteCore.py:936
+#: dictionaryDisplayLiteCore.py:1071
 msgid "Line number must be a whole number"
 msgstr "Il numero di riga deve essere un numero intero"
 
-#: dictionaryDisplayLiteCore.py:1333
+#: entryTrace.py:277
+msgid "Line: {line}"
+msgstr "Rivi: {line}"
+
+#: dictionaryDisplayLiteCore.py:1472
 msgid "Malformed entry (expected 4 tab-separated fields, found {fieldCount}) (line {lineNumber})"
 msgstr "Voce malformata (previsti 4 campi separati da tabulazione, trovati {fieldCount}) (riga {lineNumber})"
 
-#: reportDialog.py:54
+#: entryTraceDialog.py:61
+msgid "Matched"
+msgstr "Täsmäsi"
+
+#: entryTrace.py:283
+msgid "Matched: {matched}"
+msgstr "Täsmäsi: {matched}"
+
+#: reportDialog.py:55
 msgid "Message"
 msgstr "İleti"
 
-#: dictionaryDisplayLiteCore.py:801
+#: dictionaryDisplayLiteCore.py:936
 msgid "Move &down"
 msgstr "Sposta in &basso"
 
-#: dictionaryDisplayLiteCore.py:799
+#: dictionaryDisplayLiteCore.py:934
 msgid "Move &up"
 msgstr "Sposta in &alto"
 
-#: dictionaryDisplayLiteCore.py:700
-#: dictionaryDisplayLiteCore.py:731
-#: dictionaryDisplayLiteCore.py:744
+#: entryTraceDialog.py:176
+msgid "No dictionary entry changes this text. If it is still pronounced wrongly, the cause is outside the dictionaries"
+msgstr "Mikään sanakirjamerkintä ei muuta tätä tekstiä. Jos se äännetään edelleen väärin, syy ei ole sanakirjoissa"
+
+#: dictionaryDisplayLiteCore.py:778
+#: dictionaryDisplayLiteCore.py:809
+#: dictionaryDisplayLiteCore.py:822
 msgid "No dictionary entry is selected"
 msgstr "Nessuna voce di dizionario selezionata"
 
-#: dictionaryDisplayLiteCore.py:1272
+#: dictionaryDisplayLiteCore.py:1411
 msgid "No dictionary file was found to check"
 msgstr "Nessun file di dizionario trovato da controllare"
 
-#: dictionaryDisplayLiteCore.py:1386
+#: entryTraceDialog.py:174
+msgid "No entry contains that word"
+msgstr "Mikään merkintä ei sisällä tätä sanaa"
+
+#: dictionaryDisplayLiteCore.py:867
+msgid "No entry could be disabled because their lines are not in a valid format"
+msgstr "Yhtäkään merkintää ei voitu poistaa käytöstä, koska niiden rivit eivät ole kelvollisessa muodossa"
+
+#: dictionaryDisplayLiteCore.py:1525
 msgid "No voice dictionary is available to edit"
 msgstr "Nessun dizionario vocale disponibile da modificare"
 
-#: dictionaryDisplayLiteCore.py:1170
+#: entryTraceDialog.py:61
+msgid "No."
+msgstr "Ei."
+
+#: entryTrace.py:302
+msgid "Not loaded by NVDA: {name}, line {line}: {reason}"
+msgstr "NVDA ei ladannut: {name}, rivi {line}: {reason}"
+
+#: dictionaryDisplayLiteCore.py:1307
 msgid "Open dictionary file"
 msgstr "Apri file del dizionario"
 
-#: dictionaryDisplayLiteCore.py:1171
+#: dictionaryDisplayLiteCore.py:1308
 msgid "Open dictionary folder"
 msgstr "Apri cartella del dizionario"
 
-#: reportDialog.py:231
+#: reportDialog.py:256
 msgid "Opened the dictionary file. Go to line {line}"
 msgstr "Sözlük dosyası açıldı. {line} numaralı satıra git"
 
-#: reportDialog.py:54
+#: entryTraceDialog.py:61
+#: reportDialog.py:55
 msgid "Pattern"
 msgstr "Desen"
 
-#: dictionaryDisplayLiteCore.py:1116
+#: entryTrace.py:279
+msgid "Pattern: {pattern}"
+msgstr "Malli: {pattern}"
+
+#: dictionaryDisplayLiteCore.py:1252
 msgid "Press once to open the DictionaryDisplayLite quick menu, twice to open Search and Edit Voice Dictionary directly, or three times to validate the speech dictionary of the current synthesizer"
 msgstr "DictionaryDisplayLite hızlı menüsünü açmak için bir kez, Ses Sözlüğünü Ara ve Düzenle'yi doğrudan açmak için iki kez veya geçerli sentezleyicinin konuşma sözlüğünü doğrulamak için üç kez basın"
 
-#: dictionaryDisplayLiteCore.py:1085
+#: dictionaryDisplayLiteCore.py:1221
 msgid "Press once to open the Voice dictionary, twice for the Default dictionary, or three times for the Temporary dictionary"
 msgstr "Premi una volta per aprire il dizionario Vocale, due volte per il dizionario Predefinito, o tre volte per il dizionario Temporaneo"
 
-#: dictionaryDisplayLiteCore.py:104
+#: dictionaryDisplayLiteCore.py:131
 msgid "Regular expression"
 msgstr "Espressione regolare"
 
-#: dictionaryDisplayLiteCore.py:890
+#: dictionaryDisplayLiteCore.py:1025
 msgid "Rep&lace:"
 msgstr " Sosti&tuisci:"
 
-#: reportDialog.py:236
+#: entryTrace.py:280
+msgid "Replacement: {replacement}"
+msgstr "Korvaus: {replacement}"
+
+#: entryTraceDialog.py:264
+#: reportDialog.py:261
 msgid "Report copied to clipboard"
 msgstr "Rapor panoya kopyalandı"
 
-#: dictionaryDisplayLiteCore.py:485
-#: dictionaryDisplayLiteCore.py:1177
+#: dictionaryDisplayLiteCore.py:540
+#: dictionaryDisplayLiteCore.py:1319
 msgid "Search and Edit Voice Dictionary"
 msgstr "Cerca e modifica dizionario vocale"
 
-#: dictionaryDisplayLiteCore.py:633
+#: dictionaryDisplayLiteCore.py:711
 msgid "Search not run: the regular expression is not valid"
 msgstr "Arama çalıştırılmadı: düzenli ifade geçerli değil"
 
-#: dictionaryDisplayLiteCore.py:629
+#: dictionaryDisplayLiteCore.py:707
 msgid "Search not run: the regular expression is too complex or too long"
 msgstr "Arama çalıştırılmadı: düzenli ifade çok karmaşık veya çok uzun"
 
-#: dictionaryDisplayLiteCore.py:637
+#: dictionaryDisplayLiteCore.py:715
 msgid "Search stopped because it took too long. Results are incomplete"
 msgstr "Arama çok uzun sürdüğü için durduruldu. Sonuçlar eksik"
 
@@ -351,117 +501,199 @@ msgstr "Arama çok uzun sürdüğü için durduruldu. Sonuçlar eksik"
 msgid "Select the speech dictionary file to check"
 msgstr "Kontrol edilecek konuşma sözlüğü dosyasını seçin"
 
-#: reportDialog.py:54
+#: reportDialog.py:55
 msgid "Severity"
 msgstr "Önem derecesi"
 
-#: reportDialog.py:62
+#: reportDialog.py:64
 msgid "Show &all types"
 msgstr "Tüm tipleri göster"
 
-#: reportDialog.py:69
+#: reportDialog.py:72
 msgid "Show &description of each issue"
 msgstr "Her sorunun açıklamasını göster"
 
-#: reportDialog.py:54
+#: dictionaryDisplayLiteCore.py:564
+#: entryTraceDialog.py:54
+#: reportDialog.py:75
+msgid "Show &line number"
+msgstr "Näytä &rivinumero"
+
+#: entryTrace.py:296
+#: entryTraceDialog.py:167
+msgid "Speech dictionary processing is turned off in NVDA"
+msgstr "Puhesanakirjojen käsittely on poistettu käytöstä NVDA:ssa"
+
+#: reportDialog.py:55
 msgid "Suggestion"
 msgstr "Öneri"
 
-#: dictionaryDisplayLiteCore.py:1148
+#: dictionaryDisplayLiteCore.py:1285
+#: entryTrace.py:118
 msgid "Temporary dictionary"
 msgstr "Dizionario temporaneo"
 
-#: reportDialog.py:215
+#: entryTraceDialog.py:73
+msgid "Text after all &dictionaries"
+msgstr "Teksti kaikkien &sanakirjojen jälkeen"
+
+#: entryTrace.py:294
+msgid "Text after all dictionaries: {text}"
+msgstr "Teksti kaikkien sanakirjojen jälkeen: {text}"
+
+#: entryTrace.py:286
+msgid "Text after this entry: {text}"
+msgstr "Tekst po tym wpisie: {text}"
+
+#: entryTrace.py:285
+msgid "Text before this entry: {text}"
+msgstr "Tekst przed tym wpisem: {text}"
+
+#: entryTrace.py:294
+msgid "Text checked: {text}"
+msgstr "Sprawdzony tekst: {text}"
+
+#: entryTraceDialog.py:253
+#: reportDialog.py:240
 msgid "The dictionary editor is not available"
 msgstr "Sözlük düzenleyici kullanılamıyor"
 
-#: dictionaryDisplayLiteCore.py:1398
+#: entryTraceDialog.py:109
+msgid "The dictionary entry check failed. See the NVDA log for details"
+msgstr "Sprawdzenie wpisu słownika nie powiodło się. Szczegóły znajdziesz w logu NVDA"
+
+#: entryTrace.py:189
+msgid "The dictionary file could not be read"
+msgstr "Nie można odczytać pliku słownika"
+
+#: dictionaryDisplayLiteCore.py:1537
 msgid "The dictionary file was not found"
 msgstr "Sözlük dosyası bulunamadı"
 
-#: dictionaryDisplayLiteCore.py:930
+#: dictionaryDisplayLiteCore.py:1065
 msgid "The pattern cannot be empty"
 msgstr "Il modello non può essere vuoto"
 
-#: dictionaryDisplayLiteCore.py:749
+#: dictionaryDisplayLiteCore.py:845
+msgid "There are no entries to enable or disable"
+msgstr "Brak wpisów do włączenia lub wyłączenia"
+
+#: entryTraceDialog.py:249
+msgid "This entry cannot be edited here"
+msgstr "Tego wpisu nie można edytować w tym miejscu"
+
+#: dictionaryDisplayLiteCore.py:827
 msgid "This entry cannot be enabled or disabled because its line is not in a valid format"
 msgstr "Bu girdi, satırı geçerli bir biçimde olmadığından etkinleştirilemiyor veya devre dışı bırakılamıyor"
 
-#: dictionaryDisplayLiteCore.py:899
+#: entryTrace.py:289
+msgid "This entry matched but did not change the text"
+msgstr "Ten wpis pasował, ale nie zmienił tekstu"
+
+#: dictionaryDisplayLiteCore.py:1034
 msgid "Type"
 msgstr "Tipo"
 
-#: dictionaryDisplayLiteCore.py:1356
+#: entryTrace.py:281
+msgid "Type: {type}"
+msgstr "Typ: {type}"
+
+#: dictionaryDisplayLiteCore.py:1495
 msgid "Unrecognized case-sensitivity flag (line {lineNumber})"
 msgstr "Flag di distinzione maiuscole/minuscole non riconosciuto (riga {lineNumber})"
 
-#: dictionaryDisplayLiteCore.py:1349
+#: dictionaryDisplayLiteCore.py:1488
 msgid "Unrecognized entry type \"{typeFlag}\" (line {lineNumber})"
 msgstr "Tipo di voce non riconosciuto \"{typeFlag}\" (riga {lineNumber})"
 
-#: dictionaryDisplayLiteCore.py:501
+#: dictionaryDisplayLiteCore.py:557
 msgid "Use regular &expression for search"
 msgstr "Usa &espressione regolare per la ricerca"
 
-#: dictionaryDisplayLiteCore.py:1175
+#: dictionaryDisplayLiteCore.py:1317
 msgid "Validate synthesizer dictionary"
 msgstr "Sentezleyici sözlüğünü doğrula"
 
-#: dictionaryDisplayLiteCore.py:1146
-#: dictionaryDisplayLiteCore.py:1258
+#: dictionaryDisplayLiteCore.py:1283
+#: dictionaryDisplayLiteCore.py:1397
+#: entryTrace.py:119
 msgid "Voice dictionary"
 msgstr "Dizionario vocale"
 
-#: dictionaryDisplayLiteCore.py:103
+#: dictionaryDisplayLiteCore.py:130
 msgid "Whole word"
 msgstr "Parola intera"
 
-#: reportDialog.py:105
-#: reportDialog.py:123
+#: reportDialog.py:113
+#: reportDialog.py:131
 msgid "checked"
 msgstr "selezionato"
 
-#: dictionaryDisplayLiteCore.py:1016
+#: dictionaryDisplayLiteCore.py:1152
 msgid "default"
 msgstr "predefinito"
 
-#: dictionaryDisplayLiteCore.py:1015
+#: dictionaryDisplayLiteCore.py:1151
 msgid "dictionary"
 msgstr "dizionario"
 
-#: reportDialog.py:105
-#: reportDialog.py:123
+#: entryTrace.py:282
+msgid "no"
+msgstr "nie"
+
+#: reportDialog.py:113
+#: reportDialog.py:131
 msgid "not checked"
 msgstr "non selezionato"
 
-#: dictionaryDisplayLiteCore.py:1018
+#: dictionaryDisplayLiteCore.py:1154
 msgid "temporary"
 msgstr "temporaneo"
 
-#: dictionaryDisplayLiteCore.py:1017
+#: dictionaryDisplayLiteCore.py:1153
 msgid "voice"
 msgstr "vocale"
 
-#: reportDialog.py:146
+#: entryTrace.py:282
+msgid "yes"
+msgstr "tak"
+
+#: entryTraceDialog.py:171
+msgid "{count} dictionary entries change this text"
+msgstr "{count} wpisów słownika zmienia ten tekst"
+
+#: dictionaryDisplayLiteCore.py:881
+msgid "{count} entries disabled, {skipped} could not be disabled"
+msgstr "Wyłączono wpisów: {count}, nie udało się wyłączyć: {skipped}"
+
+#: reportDialog.py:160
 msgid "{count} issue(s) shown"
 msgstr "{count} sorun gösteriliyor"
 
-#: dictionaryDisplayLiteCore.py:640
+#: dictionaryDisplayLiteCore.py:718
 msgid "{count} results found"
 msgstr "{count} risultati trovati"
 
-#: dictionaryDisplayLiteCore.py:1212
+#: dictionaryDisplayLiteCore.py:1351
 msgid "{label} has no file on disk yet"
 msgstr "{label} non ha ancora alcun file sul disco"
 
-#: dictionaryDisplayLiteCore.py:1229
+#: dictionaryDisplayLiteCore.py:1368
 msgid "{label} has no folder on disk yet"
 msgstr "{label} non ha ancora alcuna cartella sul disco"
 
-#: dictionaryDisplayLiteCore.py:602
+#: dictionaryDisplayLiteCore.py:671
 msgid "{label}, disabled"
 msgstr "{label}, devre dışı"
 
-#: dictionaryDisplayLiteCore.py:596
+#: entryTrace.py:211
+msgid "{name} is turned off in NVDA and was not checked"
+msgstr "{name} jest wyłączone w NVDA i nie zostało sprawdzone"
+
+#: dictionaryDisplayLiteCore.py:666
+msgid "{pattern} → {replacement}"
+msgstr "{pattern} → {replacement}"
+
+#: dictionaryDisplayLiteCore.py:660
 msgid "{pattern} → {replacement} (line {line})"
 msgstr "{pattern} → {replacement} (riga {line})"

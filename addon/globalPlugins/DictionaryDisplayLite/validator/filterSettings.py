@@ -29,8 +29,8 @@ def getFilterPath():
 
 
 def readFilterSettings(path):
-	"""Return {"excludedCodes": set, "showDescription": bool}; defaults apply to anything missing or invalid."""
-	settings = {"excludedCodes": set(), "showDescription": True}
+	"""Return {"excludedCodes": set, "showDescription": bool, "showLineNumber": bool}; defaults apply to anything missing or invalid."""
+	settings = {"excludedCodes": set(), "showDescription": True, "showLineNumber": True}
 	try:
 		with open(path, "r", encoding="utf-8") as handle:
 			data = json.load(handle)
@@ -43,16 +43,21 @@ def readFilterSettings(path):
 		settings["excludedCodes"] = {code for code in codes if isinstance(code, str)}
 	if isinstance(data.get("showDescription"), bool):
 		settings["showDescription"] = data["showDescription"]
+	if isinstance(data.get("showLineNumber"), bool):
+		settings["showLineNumber"] = data["showLineNumber"]
 	return settings
 
 
-def writeFilterSettings(path, excludedCodes, showDescription):
+def writeFilterSettings(path, excludedCodes, showDescription, showLineNumber=True):
 	os.makedirs(os.path.dirname(path), exist_ok=True)
 	temporaryPath = path + ".tmp"
 	try:
 		with open(temporaryPath, "w", encoding="utf-8") as handle:
 			json.dump(
-				{"version": 1, "excludedCodes": sorted(excludedCodes), "showDescription": showDescription},
+				{
+					"version": 1, "excludedCodes": sorted(excludedCodes),
+					"showDescription": showDescription, "showLineNumber": showLineNumber,
+				},
 				handle, indent=2,
 			)
 		os.replace(temporaryPath, path)
@@ -91,13 +96,24 @@ def setShowDescription(value):
 		_loadedSettings()["showDescription"] = bool(value)
 
 
+def getShowLineNumber():
+	with _cacheLock:
+		return _loadedSettings()["showLineNumber"]
+
+
+def setShowLineNumber(value):
+	with _cacheLock:
+		_loadedSettings()["showLineNumber"] = bool(value)
+
+
 def _saveLatest():
 	import logHandler
 	with _writeLock:
 		excludedCodes = getExcludedCodes()
 		showDescription = getShowDescription()
+		showLineNumber = getShowLineNumber()
 		try:
-			writeFilterSettings(getFilterPath(), excludedCodes, showDescription)
+			writeFilterSettings(getFilterPath(), excludedCodes, showDescription, showLineNumber)
 		except OSError:
 			logHandler.log.exception("DictionaryDisplayLite: validator filter could not be saved")
 

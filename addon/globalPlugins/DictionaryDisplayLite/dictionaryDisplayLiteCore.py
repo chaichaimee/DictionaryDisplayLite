@@ -14,21 +14,26 @@ import addonHandler
 import core
 import globalPluginHandler
 import globalVars
+import api
 import controlTypes
 import logHandler
+import textInfos
 import gui
 import gui.guiHelper
 import ui
 import speechDictHandler
 from scriptHandler import script
 
-from .validator import editorLink
+from .validator import editorLink, entryTrace, entryTraceDialog, filterSettings
 from .validator import launcher as dictionaryCheckLauncher
 
 addonHandler.initTranslation()
 
 # Multi-tap gap (milliseconds) for the ctrl+shift+D dictionary-open gesture.
 DICTIONARY_TAP_WINDOW_MS = 350
+
+# Longest text handed to the dictionary entry check, so a huge selection cannot stall the main thread.
+MAX_TRACE_TEXT_LENGTH = 5000
 
 # Safety limits for the user-typed regular expression in the editor search box.
 SEARCH_REGEX_MAX_LENGTH = 200
@@ -79,6 +84,28 @@ def saveSettings(settingsToSave):
 	except OSError as saveError:
 		logHandler.log.debug(f"DictionaryDisplayLite: Failed to save settings - {saveError}")
 		ui.message(_("Could not save DictionaryDisplayLite settings."))
+
+
+def _captureTextToCheck():
+	"""
+	Returns the selected text of the focused control or browse mode document.
+	With nothing selected it falls back to the line at the caret. Must run
+	before any dialog opens, because opening one moves the focus away.
+	"""
+	try:
+		textSource = api.getCaretObject()
+		selectionInfo = textSource.makeTextInfo(textInfos.POSITION_SELECTION)
+		if not selectionInfo.isCollapsed:
+			capturedText = selectionInfo.text
+		else:
+			lineInfo = textSource.makeTextInfo(textInfos.POSITION_CARET)
+			lineInfo.expand(textInfos.UNIT_LINE)
+			capturedText = lineInfo.text
+	except (RuntimeError, NotImplementedError, AttributeError, LookupError, COMError) as captureError:
+		logHandler.log.debug(f"DictionaryDisplayLite: no text could be captured for the entry check - {captureError}")
+		return ""
+	capturedText = (capturedText or "").replace("\r\n", "\n").replace("\r", "\n").strip("\n")
+	return capturedText[:MAX_TRACE_TEXT_LENGTH]
 
 
 def _getEntryTypeChoices():
@@ -437,6 +464,34 @@ def _leadingLineCount(entry):
 	return 1 if entry.comment else 0
 
 
+def _canToggleEntry(entry):
+	"""
+	True when switching the entry on or off survives a save and reload: a
+	'#'-prefixed line is read back as a disabled entry only when its pattern
+	is not blank-led and its type is a known one (see _disabledRowFromLine).
+	Pure function: no NVDA/wx calls.
+	"""
+	if entry.rawLine is not None:
+		return False
+	if not entry.isEnabled:
+		return True
+	if not entry.pattern or entry.pattern[0].isspace():
+		return False
+	return str(entry.type) in _getValidEntryTypeValuesAsStrings()
+
+
+def _bulkToggleState(entries):
+	"""
+	Returns (canToggle, shouldEnable) for the whole-dictionary switch.
+	shouldEnable is True when every switchable entry is already off, so the
+	next action turns them all back on. Pure function: no NVDA/wx calls.
+	"""
+	switchable = [entry for entry in entries if _canToggleEntry(entry)]
+	if not switchable:
+		return False, False
+	return True, not any(entry.isEnabled for entry in switchable)
+
+
 class DictionaryEditorDialog(wx.Dialog):
 	"""
 	Custom search-and-edit GUI for the current voice dictionary. Built as a
@@ -491,6 +546,7 @@ class DictionaryEditorDialog(wx.Dialog):
 		self._searchAnnounceTimer = None
 		self._searchProblem = None
 		self._trailingLines = []
+		self._showLineNumber = filterSettings.getShowLineNumber()
 
 		self._loadEntries()
 
@@ -502,6 +558,13 @@ class DictionaryEditorDialog(wx.Dialog):
 		)
 		self._useRegexSearchCheckbox.SetValue(False)
 		self._useRegexSearchCheckbox.Bind(wx.EVT_CHECKBOX, self._onSearchChanged)
+
+		self._showLineNumberCheckbox = sizerHelper.addItem(
+			# Translators: Checkbox controlling whether each entry in the list shows its line number.
+			wx.CheckBox(self, label=_("Show &line number"))
+		)
+		self._showLineNumberCheckbox.SetValue(self._showLineNumber)
+		self._showLineNumberCheckbox.Bind(wx.EVT_CHECKBOX, self._onShowLineNumberToggled)
 
 		# Translators: Label of the search box in the voice dictionary editor.
 		self._searchEdit = sizerHelper.addLabeledControl(_("&Search:"), wx.TextCtrl)
@@ -591,12 +654,18 @@ class DictionaryEditorDialog(wx.Dialog):
 				elif searchText.lower() not in haystack.lower():
 					continue
 			self._visibleIndices.append(index)
-			entryLabel = (
-				# Translators: {pattern}/{replacement} are the entry's own text; {line} is its line number in the .dic file.
-				_("{pattern} \u2192 {replacement} (line {line})").format(
-					pattern=entry.pattern, replacement=entry.replacement, line=lineNumbers[index]
+			if self._showLineNumber:
+				entryLabel = (
+					# Translators: {pattern}/{replacement} are the entry's own text; {line} is its line number in the .dic file.
+					_("{pattern} \u2192 {replacement} (line {line})").format(
+						pattern=entry.pattern, replacement=entry.replacement, line=lineNumbers[index]
+					)
 				)
-			)
+			else:
+				# Translators: {pattern}/{replacement} are the entry's own text.
+				entryLabel = _("{pattern} \u2192 {replacement}").format(
+					pattern=entry.pattern, replacement=entry.replacement
+				)
 			if not entry.isEnabled:
 				# Translators: {label} is a dictionary entry's list text; appended for an entry that is turned off.
 				entryLabel = _("{label}, disabled").format(label=entryLabel)
@@ -611,6 +680,15 @@ class DictionaryEditorDialog(wx.Dialog):
 
 	def _onSearchChanged(self, evt):
 		self._refreshList()
+
+	def _onShowLineNumberToggled(self, evt):
+		self._showLineNumber = self._showLineNumberCheckbox.GetValue()
+		filterSettings.setShowLineNumber(self._showLineNumber)
+		filterSettings.saveInBackground()
+		selectedIndex = self._getSelectedEntryIndex()
+		self._refreshList(announce=False)
+		if selectedIndex is not None:
+			self._selectEntryByIndex(selectedIndex)
 
 	def _scheduleSearchResultAnnouncement(self):
 		if self._searchAnnounceTimer is not None:
@@ -744,7 +822,7 @@ class DictionaryEditorDialog(wx.Dialog):
 			ui.message(_("No dictionary entry is selected"))
 			return
 		entry = self._entries[entryIndex]
-		if entry.rawLine is not None:
+		if not _canToggleEntry(entry):
 			# Translators: Reported when an entry cannot be turned on or off because its line is malformed.
 			ui.message(_("This entry cannot be enabled or disabled because its line is not in a valid format"))
 			return
@@ -759,6 +837,54 @@ class DictionaryEditorDialog(wx.Dialog):
 			return
 		# Translators: Reported after an entry is turned off.
 		ui.message(_("Entry disabled"))
+
+	def _onToggleAll(self, evt):
+		canToggle, shouldEnable = _bulkToggleState(self._entries)
+		if not canToggle:
+			# Translators: Reported when Enable all or Disable all is chosen but the dictionary has no entry that can be switched.
+			ui.message(_("There are no entries to enable or disable"))
+			return
+		selectedIndex = self._getSelectedEntryIndex()
+		changedCount = 0
+		skippedCount = 0
+		for entry in self._entries:
+			if entry.rawLine is not None:
+				continue
+			if shouldEnable:
+				if not entry.isEnabled:
+					entry.isEnabled = True
+					changedCount += 1
+				continue
+			if not entry.isEnabled:
+				continue
+			if _canToggleEntry(entry):
+				entry.isEnabled = False
+				changedCount += 1
+			else:
+				skippedCount += 1
+		if not changedCount:
+			# Translators: Reported when Disable all could not switch off any entry because their lines are not in a valid format.
+			ui.message(_("No entry could be disabled because their lines are not in a valid format"))
+			return
+		self._isDirty = True
+		self._writeEntriesToDisk()
+		self._refreshList(announce=False)
+		if selectedIndex is not None:
+			self._selectEntryByIndex(selectedIndex)
+		if shouldEnable:
+			# Translators: Reported after every entry of the dictionary is turned on.
+			ui.message(_("All entries enabled"))
+			return
+		if skippedCount:
+			# Translators: Reported after Disable all when some entries could not be switched off. {count} entries were turned off, {skipped} were left on.
+			ui.message(
+				_("{count} entries disabled, {skipped} could not be disabled").format(
+					count=changedCount, skipped=skippedCount
+				)
+			)
+			return
+		# Translators: Reported after every entry of the dictionary is turned off.
+		ui.message(_("All entries disabled"))
 
 	def _onMove(self, delta):
 		if self._searchEdit.GetValue():
@@ -795,6 +921,15 @@ class DictionaryEditorDialog(wx.Dialog):
 			# Translators: Context menu item to stop an entry from being applied without deleting it.
 			toggleItem = menu.Append(wx.ID_ANY, _("Disa&ble entry"))
 		self.Bind(wx.EVT_MENU, self._onToggleEnabled, toggleItem)
+		canToggleAll, shouldEnableAll = _bulkToggleState(self._entries)
+		if shouldEnableAll:
+			# Translators: Context menu item to turn every entry of the dictionary back on.
+			toggleAllItem = menu.Append(wx.ID_ANY, _("Enable &all"))
+		else:
+			# Translators: Context menu item to turn off every entry of the dictionary without deleting any.
+			toggleAllItem = menu.Append(wx.ID_ANY, _("Disable &all"))
+		toggleAllItem.Enable(canToggleAll)
+		self.Bind(wx.EVT_MENU, self._onToggleAll, toggleAllItem)
 		# Translators: Context menu item to move the selected entry earlier in the dictionary.
 		moveUpItem = menu.Append(wx.ID_ANY, _("Move &up"))
 		# Translators: Context menu item to move the selected entry later in the dictionary.
@@ -810,7 +945,7 @@ class DictionaryEditorDialog(wx.Dialog):
 	def _reloadLiveVoiceDictionaryIfDirty(self):
 		if not self._isDirty:
 			return
-		liveDict = speechDictHandler.dictionaries.get("voice")
+		liveDict = entryTrace.getLiveDictionary("voice")
 		if liveDict is None:
 			return
 		liveFileName = getattr(liveDict, "fileName", None)
@@ -945,10 +1080,10 @@ class DictionaryEntryEditDialog(wx.Dialog):
 		typeIndex = self._typeRadioBox.GetSelection()
 		entryType = self._typeChoices[typeIndex][0] if typeIndex != wx.NOT_FOUND else self._typeChoices[0][0]
 		try:
-			speechDictHandler.SpeechDictEntry(
-				pattern, replacement, self._originalComment, caseSensitive=caseSensitive, type=entryType
+			entryTrace.createSpeechDictEntry(
+				pattern, replacement, self._originalComment, caseSensitive, entryType
 			)
-		except re.error as regexError:
+		except entryTrace.ENTRY_ERRORS as regexError:
 			# Translators: {error} is the underlying regular expression error message.
 			ui.message(_("Invalid regular expression: {error}").format(error=regexError))
 			return
@@ -991,6 +1126,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		"""
 		self._isDictionaryDialogActive = False
 		dictionaryCheckLauncher.shutdown()
+		entryTraceDialog.closeEntryTraceDialog()
 		editorLink.clearOpener()
 		if self._dictionaryTapTimer is not None:
 			self._dictionaryTapTimer.Stop()
@@ -1139,9 +1275,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		elif tapCount == 2:
 			wx.CallAfter(self._openDictionaryEditor)
 		else:
-			wx.CallAfter(self._showQuickMenu, self._buildQuickMenuData())
+			textToCheck = _captureTextToCheck()
+			wx.CallAfter(self._showQuickMenu, self._buildQuickMenuData(textToCheck))
 
-	def _buildQuickMenuData(self):
+	def _buildQuickMenuData(self, textToCheck=""):
 		dictionaryLabels = (
 			("voice", _("Voice dictionary")),
 			("default", _("Default dictionary")),
@@ -1165,12 +1302,17 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			}
 			for dictType, displayLabel in dictionaryLabels
 		]
-		# Order per request: file, folder, check error, validate, editor, settings last.
+		# Order per request: file, folder, check error, find entries for selected text, validate, editor, settings last.
 		return [
 			{"label": _("Open dictionary file"), "submenu": fileSubmenu},
 			{"label": _("Open dictionary folder"), "submenu": folderSubmenu},
 			# Translators: Item in the DictionaryDisplayLite quick menu.
 			{"label": _("Check dictionary error"), "action": self._checkDictionaryErrors},
+			# Translators: Item in the DictionaryDisplayLite quick menu that shows which dictionary entries change the selected text.
+			{
+				"label": _("Find dictionary entries for selected text"),
+				"action": lambda: entryTraceDialog.showEntryTraceDialog(textToCheck),
+			},
 			# Translators: Item in the DictionaryDisplayLite quick menu that validates the speech dictionary of the current synthesizer.
 			{"label": _("Validate synthesizer dictionary"), "action": dictionaryCheckLauncher.startValidation},
 			# Translators: Item in the DictionaryDisplayLite quick menu.
@@ -1198,10 +1340,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		(this is the normal, expected case for the temporary dictionary,
 		which is session-only and is never saved to disk).
 		"""
-		speechDict = speechDictHandler.dictionaries.get(dictType)
-		if speechDict is None:
-			return None
-		return getattr(speechDict, "fileName", None)
+		return entryTrace.getDictionaryFilePath(dictType)
 
 	def _openDictionaryFile(self, dictType, displayLabel):
 		filePath = self._resolveDictionaryFilePath(dictType)
@@ -1364,7 +1503,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			# since that constant is kept working via a compatibility shim
 			# on modernized NVDA installations too (confirmed during
 			# Zero-Trust verification), so this works across all versions.
-			if typeFlag == str(speechDictHandler.ENTRY_TYPE_REGEXP):
+			if typeFlag == str(entryTrace.REGEXP_ENTRY_TYPE):
 				try:
 					re.compile(pattern)
 				except re.error as regexError:

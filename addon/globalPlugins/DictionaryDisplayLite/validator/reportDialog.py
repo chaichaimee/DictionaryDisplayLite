@@ -37,6 +37,7 @@ class ValidationResultDialog(wx.Dialog):
 		self._filterChanged = False
 		self._filterAnnounceTimer = None
 		self._showDescription = filterSettings.getShowDescription()
+		self._showLineNumber = filterSettings.getShowLineNumber()
 		mainSizer = wx.BoxSizer(wx.VERTICAL)
 		self.headerLabel = wx.StaticText(self, label=report.formatHeader(self.result))
 		mainSizer.Add(self.headerLabel, 0, wx.EXPAND | wx.ALL, 10)
@@ -56,24 +57,31 @@ class ValidationResultDialog(wx.Dialog):
 			self.issueList.InsertColumn(index, label, width=width)
 		self._fillList()
 		self._applyDescriptionColumns()
+		self._applyLineColumn()
 		mainSizer.Add(self.issueList, 1, wx.EXPAND | wx.ALL, 10)
 
 		buttonSizer = wx.BoxSizer(wx.HORIZONTAL)
 		showAllButton = wx.Button(self, label=_("Show &all types"))
+		hideAllButton = wx.Button(self, label=_("&Hide all types"))
 		copyButton = wx.Button(self, label=_("&Copy Report"))
 		exportButton = wx.Button(self, label=_("&Export CSV"))
 		closeButton = wx.Button(self, id=wx.ID_CLOSE, label=_("Close"))
-		for button in (showAllButton, copyButton, exportButton, closeButton):
+		for button in (showAllButton, hideAllButton, copyButton, exportButton, closeButton):
 			buttonSizer.Add(button, 0, wx.RIGHT, 10)
 		mainSizer.Add(buttonSizer, 0, wx.ALIGN_RIGHT | wx.ALL, 10)
 		self.descriptionCheckBox = wx.CheckBox(self, label=_("Show &description of each issue"))
 		self.descriptionCheckBox.SetValue(self._showDescription)
 		mainSizer.Add(self.descriptionCheckBox, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 10)
+		self.lineNumberCheckBox = wx.CheckBox(self, label=_("Show &line number"))
+		self.lineNumberCheckBox.SetValue(self._showLineNumber)
+		mainSizer.Add(self.lineNumberCheckBox, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 10)
 		self.SetSizer(mainSizer)
 		self.SetEscapeId(wx.ID_CLOSE)
 
 		showAllButton.Bind(wx.EVT_BUTTON, self.onShowAll)
+		hideAllButton.Bind(wx.EVT_BUTTON, self.onHideAll)
 		self.descriptionCheckBox.Bind(wx.EVT_CHECKBOX, self.onDescriptionToggled)
+		self.lineNumberCheckBox.Bind(wx.EVT_CHECKBOX, self.onLineNumberToggled)
 		self.filterList.Bind(wx.EVT_CHECKLISTBOX, self.onFilterToggled)
 		copyButton.Bind(wx.EVT_BUTTON, self.onCopy)
 		exportButton.Bind(wx.EVT_BUTTON, self.onExport)
@@ -128,6 +136,11 @@ class ValidationResultDialog(wx.Dialog):
 		self._rebuildFilterList(0)
 		self.filterList.SetFocus()
 
+	def onHideAll(self, event):
+		self._changeFilter(set(self._filterCodes))
+		self._rebuildFilterList(0)
+		self.filterList.SetFocus()
+
 	def _changeFilter(self, excluded):
 		filterSettings.setExcludedCodes(excluded)
 		self._filterChanged = True
@@ -136,6 +149,7 @@ class ValidationResultDialog(wx.Dialog):
 		self._fillList()
 		self.SetTitle(_("Dictionary Check: {count} issue(s)").format(count=self.result["summary"]["total"]))
 		self.headerLabel.SetLabel(report.formatHeader(self.result))
+		self._applyLineColumn()
 		self.Layout()
 		if self._filterAnnounceTimer is not None:
 			self._filterAnnounceTimer.Stop()
@@ -153,12 +167,23 @@ class ValidationResultDialog(wx.Dialog):
 		self._fillList()
 		self._applyDescriptionColumns()
 
+	def onLineNumberToggled(self, event):
+		self._showLineNumber = self.lineNumberCheckBox.GetValue()
+		filterSettings.setShowLineNumber(self._showLineNumber)
+		self._filterChanged = True
+		self._applyLineColumn()
+
+	def _applyLineColumn(self):
+		self.issueList.SetColumnWidth(0, 60 if self._showLineNumber else 0)
+		for row, issue in enumerate(self.result["issues"]):
+			self.issueList.SetItem(row, 0, str(issue["line"]) if self._showLineNumber else "")
+
 	def _applyDescriptionColumns(self):
 		self.issueList.SetColumnWidth(5, 320 if self._showDescription else 0)
 
 	def _fillList(self):
 		for row, issue in enumerate(self.result["issues"]):
-			self.issueList.InsertItem(row, str(issue["line"]))
+			self.issueList.InsertItem(row, str(issue["line"]) if self._showLineNumber else "")
 			if self._showDescription:
 				message, suggestion = issue["message"], issue["suggestion"] or ""
 			else:
